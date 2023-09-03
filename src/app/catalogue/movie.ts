@@ -6,6 +6,8 @@ export class Movie {
         public details: string,
         public imageLink: string
     )
-    {}
+    {
+        this.imageLink = 'https://image.tmdb.org/t/p/w500/'+this.imageLink;
+    }
 
 }
