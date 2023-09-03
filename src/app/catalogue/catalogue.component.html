@@ -5,7 +5,11 @@
         <h2>Popular Movies</h2>
         <ul>
             <p> the movie list length is "{{no}}"</p>
-            <!-- <li *ngFor="let movie of movies">{{ movie.title }}</li> -->
+            <p>movie name: {{myMovie.movieName}}</p>
+            <p> the movie date is "{{myMovie.releaseDate}}"</p>
+            <!-- <p> the movie list length is "{{movies[0]? movies[0] : 'this is an empty list'}}"</p> -->
+            <li *ngFor="let movie of movies">{{ movie.movieName }}</li>
+        
         </ul>
     </div>
 </div>
