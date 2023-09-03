@@ -25,12 +25,16 @@
 <div class="container">
     <div class="row">
       <div class="col-md-4" *ngFor="let movie of movies">
-        <div class="card mb-4">
+        <div class="card mb-4" >
           <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="card-img-top" alt="{{ movie.title }}">
           <div class="card-body">
             <h4 class="card-title">{{ movie.title }}</h4>
             <p class="card-text">{{ movie.overview }}</p>
             <p class="card-text">Release Date: {{ movie.release_date }}</p>
+
+            <a href="" id = 'detailsButton'>
+                <button class="btn btn-primary mr-2" >Movie Details</button>
+                </a>
           </div>
         </div>
       </div>

@@ -1,7 +1,20 @@
-.card{
+/* .card{
     display: flexbox;
-    /* padding: 5px; */
+    
     border: solid black 1px;
     border-radius: 2px;
     flex-wrap: wrap;
-}
+} */
+
+.card-img-top {
+    max-width: 100%;
+  }
+  .card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: break-word;
+  }
+  .card{
+    height: 650px;
+  }
