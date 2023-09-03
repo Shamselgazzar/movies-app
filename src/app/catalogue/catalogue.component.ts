@@ -10,12 +10,13 @@ import { TmdbService } from './tmdb.service';
 })
 
 export class CatalogueComponent implements OnInit {
-  movies : Movie[] = [];
-  movies2 : any[] = [];
+  //movies2 : Movie[] = [];
   //const movieee: string = '';
   myMovie = new Movie('','',new Date,'','')
-  s :string = this.myMovie.movieName
+  s :string = this.myMovie.title
   no : number = 3;
+
+  movies : any[] = [];
 
   constructor (private tmdbService : TmdbService) {}
 
@@ -45,7 +46,8 @@ export class CatalogueComponent implements OnInit {
     this.tmdbService.getPopularMovies().subscribe( 
       data => {
         console.log(data.results.length)
-        this.movies2 = data.results;
+        this.movies = data.results;
+        console.log(data.results[0])
       }
     );
       

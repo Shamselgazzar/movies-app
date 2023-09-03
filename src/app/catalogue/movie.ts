@@ -1,6 +1,6 @@
 export class Movie {
     constructor(
-        public movieName:string,
+        public title:string,
         public author: string,
         public releaseDate: Date,
         public details: string,

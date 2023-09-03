@@ -1,15 +1,59 @@
 <p>catalogue works!</p>
 
+<!--
 <div class="container">
     <div class="row">
+        <div class="col-xs-12">
+            <p>hello</p>
+        </div>
+
         <h2>Popular Movies</h2>
-        <ul>
-            <p> the movie list length is "{{no}}"</p>
-            <p>movie name: {{myMovie.movieName}}</p>
+        <p> the movie list length is "{{no}}"</p>
+            <p>movie name: {{myMovie.title}}</p>
             <p> the movie date is "{{myMovie.releaseDate}}"</p>
-            <!-- <p> the movie list length is "{{movies[0]? movies[0] : 'this is an empty list'}}"</p> -->
-            <li *ngFor="let movie of movies2">{{ movie.title }}</li>
-        
+        <ul *ngIf="movies">
+            <li *ngFor="let movie of movies">{{ movie.title }}</li>
         </ul>
+        <hr>
+        <ul *ngIf="movies">
+            
+        </ul>
+    </div>
+</div>
+-->
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let movie of movies">
+        <div class="card mb-4">
+          <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="card-img-top" alt="{{ movie.title }}">
+          <div class="card-body">
+            <h4 class="card-title">{{ movie.title }}</h4>
+            <p class="card-text">{{ movie.overview }}</p>
+            <p class="card-text">Release Date: {{ movie.release_date }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="row">      
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <a href="https://www.imdb.com/title/tt0111161/" target="_blank">
+                <img src="https://m.media-amazon.com/images/I/51PmHDi0bFL.jpg" class="card-img-top" alt="Movie 1">
+            </a>
+            <div class="card-body" style="align-items: center; justify-content: center;">
+                <h5 class="card-title">The Shawshank Redemption</h5>
+                <p class="card-text">Release Year: 1994</p>
+                <p class="card-text">Director: Frank Darabont</p>
+                <div style="text-align: center;">
+                    <a href="#" style="display: flex;">
+                    <button class="btn btn-primary mr-2" >Play Trailer</button>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
     </div>
 </div>
