@@ -11,6 +11,7 @@ import { TmdbService } from './tmdb.service';
 
 export class CatalogueComponent implements OnInit {
   movies : Movie[] = [];
+  movies2 : any[] = [];
   //const movieee: string = '';
   myMovie = new Movie('','',new Date,'','')
   s :string = this.myMovie.movieName
@@ -24,7 +25,7 @@ export class CatalogueComponent implements OnInit {
       
       this.tmdbService.getMovies(i).subscribe( 
         data => {
-          console.log(data)
+          //console.log(data)
           const newMovie = new Movie(
             data.original_title, 
             data.title, 
@@ -34,17 +35,25 @@ export class CatalogueComponent implements OnInit {
           );
         this.myMovie = newMovie;
         this.movies.push(newMovie);
-        console.log(this.movies.length)
-        console.log(i)
+       
         }
       )
-      //this.movies.push(this.myMovie);
+      
 
     }
 
-  }
+    this.tmdbService.getPopularMovies().subscribe( 
+      data => {
+        console.log(data.results.length)
+        this.movies2 = data.results;
+      }
+    );
+      
+      
+      
+    
 
-   
+  }
 
   
 }
