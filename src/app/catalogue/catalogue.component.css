@@ -1,10 +1,7 @@
-/* .card{
+.card{
     display: flexbox;
     
-    border: solid black 1px;
-    border-radius: 2px;
-    flex-wrap: wrap;
-} */
+}
 
 .card-img-top {
     max-width: 100%;
@@ -15,6 +12,38 @@
     white-space: nowrap;
     word-wrap: break-word;
   }
-  .card{
-    height: 650px;
+  .card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: break-word;
   }
+
+  /* Default card height */
+.card {
+    height: 560px;
+    margin: 2%;
+  }
+  .card .mb-4{
+    margin: 2%;
+    padding: 2%;
+  }
+  /* Media query for screens smaller than 992px (e.g., tablets and mobile) */
+  @media (max-width: 992px) {
+    .card {
+      height: auto; /* Allow the card height to adjust based on content */
+      max-width: 500px;
+    }
+}
+    @media (min-width: 1200px) {
+        .card {
+          height: auto; /* Allow the card height to adjust based on content */
+          max-width: 500px;
+        }
+    
+    /* Optional: Adjust other card styles for smaller screens if needed */
+    .card-body {
+      padding: 10px; /* Adjust padding for smaller screens */
+    }
+  }
+  
