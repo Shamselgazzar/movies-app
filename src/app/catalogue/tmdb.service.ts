@@ -31,4 +31,6 @@ export class TmdbService {
     const discoverUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=52d48651a5c52ca72ab4d544cf817d92'
     return this.http.get(discoverUrl);
   }
+
+  
 }

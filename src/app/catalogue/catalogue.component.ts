@@ -22,26 +22,30 @@ export class CatalogueComponent implements OnInit {
 
   ngOnInit(): void {
     
-    for (let i = 550; i < 555; i++) {
+    // for (let i = 550; i < 555; i++) {
       
-      this.tmdbService.getMovies(i).subscribe( 
-        data => {
-          //console.log(data)
-          const newMovie = new Movie(
-            data.original_title, 
-            data.title, 
-            data.release_date, 
-            data.overview, 
-            data.backdrop_path
-          );
-        this.myMovie = newMovie;
-        this.movies.push(newMovie);
+    //   this.tmdbService.getMovies(i).subscribe( 
+    //     data => {
+    //       //console.log(data)
+    //       const newMovie = new Movie(
+    //         data.original_title, 
+    //         data.title, 
+    //         data.release_date, 
+    //         data.overview, 
+    //         data.backdrop_path
+    //       );
+    //     this.myMovie = newMovie;
+    //     this.movies.push(newMovie);
        
-        }
-      )
+    //     }
+    //   )
       
 
-    }
+    // }
+
+    localStorage.setItem('apiKey', 'your-api-key');
+const apiKeyyy = localStorage.getItem('apiKey');
+console.log(apiKeyyy);
 
     this.tmdbService.getPopularMovies().subscribe( 
       data => {
@@ -49,11 +53,12 @@ export class CatalogueComponent implements OnInit {
         this.movies = data.results;
         console.log(data.results[0])
       }
+      
     );
       
       
-      
     
+
 
   }
 
