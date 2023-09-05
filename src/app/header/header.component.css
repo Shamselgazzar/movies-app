@@ -22,5 +22,9 @@
   .nav-item.active .nav-link{
     background-color: rgb(170, 169, 169);
     color: rgb(43, 43, 43);
+    height: 100%;
     
   } 
+  .navbar.navbar-expand-md.navbar-dark.bg-dark{
+    padding: 2;
+  }
