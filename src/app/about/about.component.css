@@ -3,6 +3,9 @@
     max-width: min-content;
 }
 
+#logo{
+    margin: 5px;
+}
 
 @media screen and (max-width: 768px ){
     .card.shadow-sm{
