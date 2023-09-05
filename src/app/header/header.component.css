@@ -18,10 +18,7 @@
     border-radius: 4px;
   }
 
-  .active {
-    background-color: rgb(95, 95, 95);
-    color: black;
-  }
+  
   .nav-item.active .nav-link{
     background-color: rgb(170, 169, 169);
     color: rgb(43, 43, 43);
