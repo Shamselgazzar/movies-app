@@ -1,49 +1,40 @@
-.card{
-    display: flexbox;
-    
+
+.card-text {
+display: -webkit-box;
+-webkit-line-clamp: 2; /* Limit to 3 lines */
+-webkit-box-orient: vertical;
+overflow: hidden;
+text-overflow: ellipsis;
 }
 
-.card-img-top {
-    max-width: 100%;
-  }
-  .card-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-wrap: break-word;
-  }
-  .card-title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-wrap: break-word;
-  }
-
-  /* Default card height */
-.card {
-    height: 560px;
-    margin: 2%;
-  }
-  .card .mb-4{
-    margin: 2%;
-    padding: 2%;
-  }
-  /* Media query for screens smaller than 992px (e.g., tablets and mobile) */
-  @media (max-width: 992px) {
-    .card {
-      height: auto; /* Allow the card height to adjust based on content */
-      max-width: 500px;
-    }
+.card-title {
+white-space: nowrap;    /* Prevent text from wrapping to the next line */
+overflow: hidden;
+text-overflow: ellipsis;
 }
-    @media (min-width: 1200px) {
-        .card {
-          height: auto; /* Allow the card height to adjust based on content */
-          max-width: 500px;
-        }
     
-    /* Optional: Adjust other card styles for smaller screens if needed */
-    .card-body {
-      padding: 10px; /* Adjust padding for smaller screens */
-    }
-  }
-  
+
+
+
+#goUp {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  opacity: 60%; 
+}
+#goDown {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  opacity: 60%; 
+}
+button.move{
+  border-radius: 100%;
+}
+
+button.more{
+  opacity: 90%;
+}
+
+
+    

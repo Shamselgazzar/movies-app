@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { HeaderComponent } from './header/header.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
     AppComponent,
     CatalogueComponent,
     HeaderComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

@@ -1,23 +1,29 @@
-/* .collapse {
-    display: none;
-    visibility: hidden;
-}
+/* .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; 
+  } 
+  */
 
+  /* .nav {
+    background-color: black;
+    color: black;
+    background: black;
+  } */
 
-@media (min-width: 768px){
+  #loginButton{
+    border: 1.5px solid rgb(204, 204, 204);
+    border-radius: 4px;
+  }
+
+  .active {
+    background-color: rgb(95, 95, 95);
+    color: black;
+  }
+  .nav-item.active .nav-link{
+    background-color: rgb(170, 169, 169);
+    color: rgb(43, 43, 43);
     
-.navbar-collapse.collapse {
-    display: block!important;
-    height: auto!important;
-    padding-bottom: 0;
-    overflow: visible!important;
-    visibility: visible!important;
-}
-}
-
-
-@media (min-width: 768px){
-    .navbar-left {
-        float: left!important;
-    }
-} */
+  } 

@@ -1,0 +1,19 @@
+.card.shadow-sm img{
+    width: 100%;
+    max-width: min-content;
+}
+
+
+@media screen and (max-width: 768px ){
+    .card.shadow-sm{
+        
+        margin-bottom: 8px;
+    }
+    .card.shadow-sm img{
+        width: 100px;
+    }
+}
+
+/* @media screen and (max-width: 576px ){
+    
+} */

@@ -8,8 +8,9 @@ import { Observable } from 'rxjs';
 
 export class TmdbService {
 
-  
-  // private apiKey = 'YOU52d48651a5c52ca72ab4d544cf817d92';
+  private pageNumber  = 1;
+  public counter = 1;
+  private apiKey = '52d48651a5c52ca72ab4d544cf817d92';
   // private apiUrl = 'https://api.themoviedb.org/3';
   // private url = `${this.apiUrl}/movie/popular?api_key=${this.apiKey}`;
 
@@ -17,20 +18,26 @@ export class TmdbService {
 
   getMovies(movieNumer: number): Observable<any> {
     const movieNumber = movieNumer.toString();
-    const url0 = 'https://api.themoviedb.org/3/movie/'+(movieNumber)+'?api_key=52d48651a5c52ca72ab4d544cf817d92';
+    const url0 = 'https://api.themoviedb.org/3/movie/'+(movieNumber)+'?api_key='+this.apiKey;
   
     return this.http.get(url0);
   }
 
-  getPopularMovies(): Observable<any> {
-    const popularUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=52d48651a5c52ca72ab4d544cf817d92'
+  getPopularMovies(pageNumber:number = this.pageNumber): Observable<any> {
+    const popularUrl = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page='+pageNumber+'&api_key='+this.apiKey;
+    console.log(popularUrl)
     return this.http.get(popularUrl);
   }
 
-  discoverMovies():Observable<any>{
-    const discoverUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=52d48651a5c52ca72ab4d544cf817d92'
+  discoverMovies(pageNumber:number = this.pageNumber):Observable<any>{
+    const discoverUrl = 'https://api.themoviedb.org/3/discover/movie?language=en-US&page='+pageNumber+'&api_key='+this.apiKey;
     return this.http.get(discoverUrl);
   }
 
-  
+  getTopRatedMovies(pageNumber:number = this.pageNumber): Observable<any>{
+    const topRatedUrl = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page='+pageNumber+'&api_key='+this.apiKey;
+    return this.http.get(topRatedUrl);
+     
+
+  }
 }

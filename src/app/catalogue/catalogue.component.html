@@ -1,67 +1,60 @@
 <p>catalogue works!</p>
 
-<!--
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <p>hello</p>
-        </div>
 
-        <h2>Popular Movies</h2>
-        <p> the movie list length is "{{no}}"</p>
-            <p>movie name: {{myMovie.title}}</p>
-            <p> the movie date is "{{myMovie.releaseDate}}"</p>
-        <ul *ngIf="movies">
-            <li *ngFor="let movie of movies">{{ movie.title }}</li>
-        </ul>
-        <hr>
-        <ul *ngIf="movies">
-            
-        </ul>
-    </div>
-</div>
--->
+<!-- style="border: solid black 1px;" -->
 
-<div class="container">
-    <div class="row">
-      <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let movie of movies">
-        <div class="card mb-4" style="border: 1px solid #ddd; ">
-          <div class="d-flex flex-column align-items-center">
-            <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="card-img-top" alt="{{ movie.title }}">
-            <div class="card-body">
-              <h4 class="card-title">{{ movie.title }}</h4>
-              <p class="card-text">{{ movie.overview }}</p>
-              <p class="card-text">Release Date: {{ movie.release_date }}</p>
-              <div class="mt-auto" style="text-align: center;">
-                <a href="" id="detailsButton">
-                  <button class="btn btn-primary">Movie Details</button>
-                </a>
-              </div>
-            </div>
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let movie of movies">
+      <div class="card mb-4 shadow">
+        <a [routerLink]="['/movie-details']" >
+          <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="card-img-top" alt="{{ movie.title }}">
+        </a>
+        
+        <div class="card-body" >
+          <h5 class="card-title">{{ movie.title }}</h5>
+          <p class="card-text">{{ movie.overview }}</p>
+          <p class="card-text">Release Date: {{ movie.release_date }}</p>
+
+          <div class="mt-auto" style="text-align: center;">
+            <a href="https://www.themoviedb.org/movie/{{movie.id}}" target="_blank" id="detailsButton">
+              <button class="btn btn-primary">Movie Details</button>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  
+  <div class="row" >
+    <div class="col-sm-12">
+      <div class="mt-auto" style="text-align: center;">
+        <a  (click)="loadMoreMovies()" >
+          <button class="more btn btn-secondary shadow" >Load More Movies...</button>
+        </a>
+      </div>
+    </div>
+  </div>
   
 
-<div class="row">      
-    <div class="col-md-4">
-        <div class="card mb-4">
-            <a href="https://www.imdb.com/title/tt0111161/" target="_blank">
-                <img src="https://m.media-amazon.com/images/I/51PmHDi0bFL.jpg" class="card-img-top" alt="Movie 1">
-            </a>
-            <div class="card-body" style="align-items: center; justify-content: center;">
-                <h5 class="card-title">The Shawshank Redemption</h5>
-                <p class="card-text">Release Year: 1994</p>
-                <p class="card-text">Director: Frank Darabont</p>
-                <div style="text-align: center;">
-                    <a href="#" style="display: flex;">
-                    <button class="btn btn-primary mr-2" >Play Trailer</button>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
 </div>
+
+
+<div id="goUp" class="mt-auto" style="text-align: right;">
+  <a  (click)="goUp()" >
+    <button class="move btn btn-secondary" >
+      <i class="bi bi-arrow-up"></i> 
+    </button>
+  </a>
+</div>
+
+<div id="goDown" class="mt-auto " style="text-align: right;">
+  <a  (click)="goDown()" >
+    <button class="move btn btn-secondary" >
+      <i class="bi bi-arrow-down"></i>
+    </button>
+  </a>
+</div>
+
+
