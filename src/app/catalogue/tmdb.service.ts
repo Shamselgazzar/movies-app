@@ -16,8 +16,7 @@ export class TmdbService {
 
   constructor(private http: HttpClient) { }
 
-  getMovies(movieId: number): Observable<any> {
-    const movieNumber = movieId.toString();
+  getMovieDetails(movieId: string) {
     const url0 = 'https://api.themoviedb.org/3/movie/'+(movieId)+'?api_key='+this.apiKey;
   
     return this.http.get(url0);

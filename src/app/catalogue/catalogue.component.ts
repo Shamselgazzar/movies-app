@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Movie } from './movie';
 import { TmdbService } from './tmdb.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-catalogue',
@@ -15,7 +16,7 @@ export class CatalogueComponent implements OnInit {
   //loadMore : boolean = false;
   movies : any[] = [];
 
-  constructor (private tmdbService : TmdbService) {}
+  constructor (private tmdbService : TmdbService, private router: Router) {}
 
   ngOnInit(): void {
 
@@ -53,5 +54,8 @@ console.log(apiKeyyy);
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   }
 
-  
+  goToMovie(movieId:string){
+    this.router.navigate(['/movie-details', movieId]);
+  }
+
 }
