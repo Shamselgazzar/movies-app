@@ -15,16 +15,41 @@
 
   #loginButton{
     border: 1.5px solid rgb(204, 204, 204);
-    border-radius: 4px;
+    border-radius: 5%;
   }
+   #loginButton.nav-item.active{
+    border: 0px ;
+    border-radius: 5%;
+  }
+  
 
   
   .nav-item.active .nav-link{
+    border-radius: 5%;
     background-color: rgb(170, 169, 169);
-    color: rgb(43, 43, 43);
+    color: rgb(20, 20, 20);
+    height: 100%;
+    border-radius: 5%;
+    font-weight: 600;
+  } 
+
+  .nav-item.active .nav-link{
+    border-radius: 5%;
+    background-color: rgb(170, 169, 169);
+    color: rgb(20, 20, 20);
     height: 100%;
     
+    font-weight: 650;
   } 
-  .navbar.navbar-expand-md.navbar-dark.bg-dark{
-    padding: 2;
+
+
+
+  .nav-item.left{
+    margin-right: 5px;
+    margin-left: 5px;
   }
+
+
+  /* .navbar.navbar-expand-md.navbar-dark.bg-dark{
+    padding: 2;
+  } */
