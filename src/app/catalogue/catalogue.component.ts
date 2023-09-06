@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Movie } from './movie';
+
 import { TmdbService } from './tmdb.service';
 import { Router } from '@angular/router';
 
@@ -28,7 +28,7 @@ console.log(apiKeyyy);
       data => {
         console.log(data.results.length)
         this.movies = data.results;
-        console.log(data.results[0])
+        console.log(data.results)
       } 
     );
   }

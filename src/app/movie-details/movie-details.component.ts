@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { TmdbService } from '../catalogue/tmdb.service';
+import { Movie } from './movie';
+
 
 @Component({
   selector: 'app-movie-details',
@@ -8,26 +10,35 @@ import { TmdbService } from '../catalogue/tmdb.service';
   styleUrls: ['./movie-details.component.css']
 })
 export class MovieDetailsComponent implements OnInit{
-  movieId : string = '';
-  movie : any = {};
-  
+  movieId !: string;
+  movie !: Movie;
+ 
   constructor(private route: ActivatedRoute, private movieService: TmdbService){}
 
   ngOnInit(): void {
-    
-    // console.log(this.movieId);
-    // this.route.params.subscribe(
-    //   (params:Params)=>{
-    //     this.movieId = params['id'];
-    //   }      
-    // );
-
-    this.movieId = this.route.snapshot.params['id'];
-    
-    this.movie = this.movieService.getMovieDetails(this.movieId);
-    console.log('this is a movie object'+this.movie);
-    console.log(this.movie);
-    //console.log(this.movieService.counter);
-    debugger
+    const movieId = this.route.snapshot.params['id'];
+    this.movieId = movieId;
+      if (movieId) {
+        this.movieService.getMovieDetails(movieId).subscribe(
+          data => {
+            this.movie  = data;
+            console.log(this.movie)             
+        });
+      }
   }
+
+  getGenres(): string {
+    return this.movie.genres.map(genre => genre.name).join(', ');
+  }
+
+  getProductionCompanies(): string {
+    return this.movie.production_companies.map(company => company.name).join(', ');
+  }
+
+  getSpokenLanguages(): string {
+    return this.movie.spoken_languages.map(language => language.name).join(', ');
+  }
+  
 }
+
+
