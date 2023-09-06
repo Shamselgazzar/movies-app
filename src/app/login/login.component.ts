@@ -1,32 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 
-import * as usersData from './users.json';
+import { AuthService } from './auth.service';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+
+
+export class LoginComponent{
   email: string = '';
   password: string = '';
-  //users: [] = usersData a;
 
-  ngOnInit(): void {
-    const users = usersData as any[];
-    console.log(users[0]);
-  }
+  constructor(private authService : AuthService){}
   
-  authenticate(email: string, password: string): boolean {
+  async login() {
+    console.log(this.email+' '+this.password);
     
-    const users = usersData as any[];
+    const isAuthenticated = await this.authService.authenticate(this.email, this.password);
 
-    const user = users.find((u) => u.email === email && u.password === password);
-    return !!user;
+    if (isAuthenticated) {
+      // Redirect or perform actions for successful login
+      console.log('User is authenticated.');
+    } else {
+      // Handle failed login
+      console.log('Authentication failed. Please check your credentials.');
+    }
   }
-  
+
   onSubmit(){
     //console.log(usersData);
   }
+  
   
 }
