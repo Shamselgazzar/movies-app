@@ -14,12 +14,13 @@
 
             <form (ngSubmit)="onSubmit()">
               <div class="mb-3">
-                <label for="username" class="form-label">Username or Email</label>
+                <label for="username" class="form-label">Email</label>
                 <input
                   type="text"
-                  id="username"
-                  [(ngModel)]="username"
-                  name="username"
+                  id="email"
+                  [(ngModel)]="email"
+                  placeholder="Enter your email"
+                  name="email"
                   class="form-control"
                   required
                 >
@@ -32,6 +33,7 @@
                   [(ngModel)]="password"
                   name="password"
                   class="form-control"
+                  placeholder="Enter your password"
                   required
                 >
               </div>
