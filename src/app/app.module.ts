@@ -9,6 +9,7 @@ import { CatalogueComponent } from './catalogue/catalogue.component';
 import { HeaderComponent } from './header/header.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { AboutComponent } from './about/about.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { AboutComponent } from './about/about.component';
     CatalogueComponent,
     HeaderComponent,
     MovieDetailsComponent,
-    AboutComponent
+    AboutComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
