@@ -3,7 +3,6 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
-
         <div class="card shadow-lg">
             
           <div class="card-header text-center">
@@ -12,34 +11,54 @@
 
           <div class="card-body ">
 
-            <form (ngSubmit)="onSubmit()">
-              <div class="mb-3">
-                <label for="username" class="form-label">Email</label>
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+              
+              <div class="mb-3 form-group">
+                <label for="email" class="form-label">Email</label>
                 <input
-                  type="text"
+                  #email = 'ngModel'
+                  ngModel
+                  type="email"
                   id="email"
-                  [(ngModel)]="email"
                   placeholder="Enter your email"
                   name="email"
                   class="form-control"
-                  required
-                >
+                  email
+                  required>
+                  <span class="help-block">
+                    <div *ngIf="email.invalid && email.touched" class="text-danger" style="font-size:smaller;">&nbsp; Please enter a valid email!</div>
+                  
+                  </span>
+                  <!-- <div *ngIf="loginForm.get('email')?.hasError('required')&& f.form.controls.email" class="text-danger" style="font-size:smaller;">&nbsp;&nbsp; Email is required.</div>
+                  <div *ngIf="loginForm.get('email')?.hasError('email')" class="text-danger">Invalid email format.</div> -->
+
               </div>
-              <div class="mb-3">
+
+              <div class=" form-group mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input
+                  #password = 'ngModel'
+                  ngModel
                   type="password"
                   id="password"
-                  [(ngModel)]="password"
                   name="password"
                   class="form-control"
                   placeholder="Enter your password"
                   required
-                >
+                  password>
+                  <span class="help-block">
+                    <div *ngIf="password.invalid && password.touched" class="text-danger" style="font-size:smaller;">&nbsp; Please enter a valid password!</div>
+                  
+                  </span>
               </div>
+
               <div class="d-grid">
-                <button type="submit" class="btn btn-primary" (click)="login()">Login</button>
+                <button 
+                type="submit" 
+                class="btn btn-primary"
+                [disabled]="f.invalid" >Login</button>
               </div>
+
             </form>
             
           </div>

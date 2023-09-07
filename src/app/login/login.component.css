@@ -1,4 +1,13 @@
+/* .container{
+    
+    background: #000;
+} */
+
 .card{
     border-radius: 20px;
     
+}
+
+input.ng-invalid.ng-touched{
+    border: 2px solid rgb(240, 127, 127);
 }

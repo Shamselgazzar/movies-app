@@ -22,20 +22,21 @@ export class MovieDetailsComponent implements OnInit{
         this.movieService.getMovieDetails(movieId).subscribe(
           data => {
             this.movie  = data;
-            console.log(this.movie)             
+            console.log(this.movie);            
         });
       }
   }
 
   getGenres(): string {
+
     return this.movie.genres.map(genre => genre.name).join(', ');
   }
 
   getProductionCompanies(): string {
     return this.movie.production_companies.map(company => company.name).join(', ');
-  }
-
+}
   getSpokenLanguages(): string {
+    
     return this.movie.spoken_languages.map(language => language.name).join(', ');
   }
   
