@@ -17,6 +17,9 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
+  isAuthenticatedCheck(){
+    return this.isAuthenticated
+  }
 
   async authenticate(email: string, password: string): Promise<boolean> {
     try {
