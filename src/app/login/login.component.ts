@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class LoginComponent{
   @ViewChild('f') myform !: NgForm;
 
 
-  constructor(private authService : AuthService){}
+  constructor(private authService : AuthService, private router : Router){}
   
   async login(email: any, password:any) {
     try{
@@ -26,6 +27,7 @@ export class LoginComponent{
       if (isAuthenticated) {
         // handle successful login
         console.log('User is authenticated.');
+        this.router.navigate(['/home']);
       } else {
         // hhandle failed login
         console.log('Authentication failed. Please check your credentials.');
@@ -43,6 +45,7 @@ export class LoginComponent{
     console.log('Form is submitted...');
     this.login(form.value.email, form.value.password);
     form.reset();
+    
   }
   
   
