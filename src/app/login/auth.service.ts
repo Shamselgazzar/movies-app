@@ -11,7 +11,7 @@ import { lastValueFrom } from 'rxjs';
 })
 
 export class AuthService {
-  isAuthenticated : boolean = false;
+  private isAuthenticated : boolean = false;
 
   private usersUrl = 'assets/users.json'
   users : any[] | undefined;
