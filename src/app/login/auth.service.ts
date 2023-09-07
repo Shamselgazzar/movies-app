@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { lastValueFrom } from 'rxjs';
+import { Subscription, lastValueFrom } from 'rxjs';
 
 
 //import * as usersData from 'assets/users.json';
@@ -12,6 +12,7 @@ import { lastValueFrom } from 'rxjs';
 
 export class AuthService {
   private isAuthenticated : boolean = false;
+  user!:any;
 
   private usersUrl = 'assets/users.json'
   users : any[] | undefined;
@@ -27,6 +28,7 @@ export class AuthService {
       this.users  = await this.getUsers();
       const user = this.users.find((u) => u.email === email && u.password === password);
       this.isAuthenticated = !!user;
+      this.user = user;
       console.log('AuthService says this user is authenticated = '+this.isAuthenticated)
       return !!user;
     } catch (error) {
