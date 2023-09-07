@@ -9,6 +9,7 @@ import { lastValueFrom } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   isAuthenticated : boolean = false;
 

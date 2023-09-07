@@ -54,8 +54,5 @@ console.log(apiKeyyy);
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   }
 
-  goToMovie(movieId:string){
-    this.router.navigate(['/movie-details', movieId]);
-  }
-
+  
 }
