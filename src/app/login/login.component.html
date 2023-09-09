@@ -1,4 +1,4 @@
-<p>login works!</p>
+<!-- <p>login works!</p> -->
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -6,7 +6,7 @@
         <div class="card shadow-lg">
             
           <div class="card-header text-center">
-            <h2>Login</h2>
+            <h2 i18n >Login</h2>
           </div>
 
           <div class="card-body ">
@@ -14,28 +14,26 @@
             <form (ngSubmit)="onSubmit(f)" #f="ngForm">
               
               <div class="mb-3 form-group">
-                <label for="email" class="form-label">Email</label>
+                <label i18n for="email" class="form-label">Email</label>
                 <input
                   #email = 'ngModel'
                   ngModel
                   type="email"
                   id="email"
                   placeholder="Enter your email"
+                  i18n-placeholder
                   name="email"
                   class="form-control"
                   email
                   required>
                   <span class="help-block">
-                    <div *ngIf="email.invalid && email.touched" class="text-danger" style="font-size:smaller;">&nbsp; Please enter a valid email!</div>
+                    <div i18n *ngIf="email.invalid && email.touched" class="text-danger" style="font-size:smaller;">&nbsp; Please enter a valid email!</div>
                   
                   </span>
-                  <!-- <div *ngIf="loginForm.get('email')?.hasError('required')&& f.form.controls.email" class="text-danger" style="font-size:smaller;">&nbsp;&nbsp; Email is required.</div>
-                  <div *ngIf="loginForm.get('email')?.hasError('email')" class="text-danger">Invalid email format.</div> -->
-
               </div>
 
               <div class=" form-group mb-3">
-                <label for="password" class="form-label">Password</label>
+                <label i18n for="password" class="form-label">Password</label>
                 <input
                   #password = 'ngModel'
                   ngModel
@@ -44,16 +42,17 @@
                   name="password"
                   class="form-control"
                   placeholder="Enter your password"
+                  i18n-placeholder
                   required
                   password>
                   <span class="help-block">
-                    <div *ngIf="password.invalid && password.touched" class="text-danger" style="font-size:smaller;">&nbsp; Please enter a valid password!</div>
+                    <div i18n *ngIf="password.invalid && password.touched" class="text-danger" style="font-size:smaller;">&nbsp; Please enter a valid password!</div>
                   
                   </span>
               </div>
 
               <div class="d-grid">
-                <button 
+                <button i18n
                 type="submit" 
                 class="btn btn-primary"
                 [disabled]="f.invalid" >Login</button>
