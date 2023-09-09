@@ -14,6 +14,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './login/auth.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AuthService } from './login/auth.service';
     HttpClientModule,
     FormsModule,
     MatProgressSpinnerModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
