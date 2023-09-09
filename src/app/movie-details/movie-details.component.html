@@ -32,11 +32,11 @@
                 <button class="btn btn-primary" [routerLink]="['/home']"  >Back to Catalog</button>
             
                 <a href="https://www.imdb.com/title/{{movie.imdb_id}}" target="_blank" *ngIf="movie.imdb_id">
-                    <button class="btn btn-warning">IMDb Link</button>
+                    <button class="btn btn-warning"  style="font-weight: bolder;">IMDb Link</button>
                 </a>
     
                 <a href="https://www.themoviedb.org/movie/{{movie.id}}" target="_blank" *ngIf="movie.imdb_id">
-                    <button class="btn btn-success">TMDb Link</button>
+                    <button class="btn btn-success" style="font-weight: bolder;">TMDb Link</button>
                 </a>
             </div>
         </div>

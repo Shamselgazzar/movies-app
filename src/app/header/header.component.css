@@ -13,7 +13,7 @@
     background: black;
   } */
 
-  #loginButton{
+  #loginButton , #logoutButton{
     border: 1.5px solid rgb(204, 204, 204);
     border-radius: 5%;
   }

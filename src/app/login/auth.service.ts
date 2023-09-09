@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subscription, lastValueFrom } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, lastValueFrom } from 'rxjs';
 
 
 //import * as usersData from 'assets/users.json';
@@ -11,23 +11,25 @@ import { Subscription, lastValueFrom } from 'rxjs';
 })
 
 export class AuthService {
+  private usersUrl = 'assets/users.json'
+
   private isAuthenticated : boolean = false;
   user!:any;
-
-  private usersUrl = 'assets/users.json'
   users : any[] | undefined;
+
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  
+  
 
   constructor(private http: HttpClient) {}
 
-  isAuthenticatedCheck(){
-    return this.isAuthenticated
-  }
 
   async authenticate(email: string, password: string): Promise<boolean> {
     try {
       this.users  = await this.getUsers();
       const user = this.users.find((u) => u.email === email && u.password === password);
       this.isAuthenticated = !!user;
+      this.isAuthenticatedSubject.next(!!user);
       this.user = user;
       console.log('AuthService says this user is authenticated = '+this.isAuthenticated)
       return !!user;
@@ -45,7 +47,11 @@ export class AuthService {
   }
 
   logout(){
-    this.isAuthenticated = false;
+    this.isAuthenticatedSubject.next(false);
+  }
+
+  isAuthenticatedCheck(): Observable<boolean> {
+    return this.isAuthenticatedSubject.asObservable();
   }
 
 }
