@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,7 +30,8 @@ import { AuthService } from './login/auth.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatPaginatorModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 
 import { TmdbService } from './tmdb.service';
 import { Router } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-catalogue',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 
 export class CatalogueComponent implements OnInit {
-  
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   isLoading = true;
   //loadMore : boolean = false;
   movies : any[] = [];
@@ -49,6 +50,10 @@ export class CatalogueComponent implements OnInit {
         
       } 
     );
+  }
+
+  onPageChange(event: any){
+    console.log(event);
   }
   
   goUp(){
