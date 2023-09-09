@@ -3,6 +3,7 @@ import { AuthService } from '../login/auth.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -27,7 +28,9 @@ export class HeaderComponent implements OnInit{
     
   }
  
-  
+  // switchLang(){
+  //   this.localSerive.switchLanguage();
+  // }
 
  
 }

@@ -28,6 +28,16 @@
       <div class="flex-grow-1"></div> 
 
       <ul class="navbar-nav ">
+
+        <!-- <li 
+            class="nav-item" 
+            routerLinkActive="active" 
+            style="cursor: pointer;" 
+            id="logoutButton"
+            (click)="switchLang()">
+          <a   class="nav-link" >Logout!</a>
+        </li> -->
+
         <li *ngIf="!isLoggedIn" class="nav-item" routerLinkActive="active" style="cursor: pointer; " id="loginButton">
           <a [routerLink]="['/login']" *ngIf="!isLoggedIn" class="nav-link">Login Here!</a>
         </li>
