@@ -20,6 +20,7 @@ export class CatalogueComponent implements OnInit {
   constructor (private tmdbService : TmdbService, private router: Router) {}
 
   ngOnInit(): void {
+    
 
     // localStorage.setItem('apiKey', 'your-api-key');
     // const apiKeyyy = localStorage.getItem('apiKey');
@@ -53,7 +54,7 @@ export class CatalogueComponent implements OnInit {
   }
 
   onPageChange(event: any){
-    console.log(event);
+    console.log(event.pageIndex);
   }
   
   goUp(){
