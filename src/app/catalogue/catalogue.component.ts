@@ -12,7 +12,8 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 
 export class CatalogueComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  pageSize = 10;
   isLoading = true;
   //loadMore : boolean = false;
   movies : any[] = [];
@@ -21,7 +22,8 @@ export class CatalogueComponent implements OnInit {
 
   ngOnInit(): void {
     
-
+    //this.paginator.pageSize = this.pageSize;
+    
     // localStorage.setItem('apiKey', 'your-api-key');
     // const apiKeyyy = localStorage.getItem('apiKey');
     // console.log(apiKeyyy);
