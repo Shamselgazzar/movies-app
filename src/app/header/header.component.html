@@ -27,7 +27,7 @@
 
       <ul class="navbar-nav ms-auto">
         <li class="nav-item" routerLinkActive="active" style="cursor: pointer; " id="loginButton">
-          <a [routerLink]="['/login']" *ngIf="!isLoggedIn" class="nav-link">Login/Register </a>
+          <a [routerLink]="['/login']" *ngIf="!isLoggedIn" class="nav-link">Sign In</a>
         </li>
         <!-- <li class="nav-item">
           <a *ngIf="!isLoggedIn && isNewUser" class="nav-link">|</a>
@@ -37,7 +37,7 @@
         </li> -->
 
         <li class="nav-item">
-          <a *ngIf="isLoggedIn" class="nav-link" >Welcome back!</a>
+          <a *ngIf="true" class="nav-link" >Welcome back!</a>
         </li>
       </ul>
     </div>

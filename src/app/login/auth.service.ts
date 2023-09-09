@@ -44,5 +44,8 @@ export class AuthService {
     return users;
   }
 
+  logout(){
+    this.isAuthenticated = false;
+  }
 
 }

@@ -29,6 +29,7 @@ console.log(apiKeyyy);
         console.log(data.results.length)
         this.movies = data.results;
         console.log(data.results)
+        
       } 
     );
   }
