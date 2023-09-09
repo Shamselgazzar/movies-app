@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 
 export class CatalogueComponent implements OnInit {
   
-  
+  isLoading = true;
   //loadMore : boolean = false;
   movies : any[] = [];
 
@@ -20,16 +20,19 @@ export class CatalogueComponent implements OnInit {
 
   ngOnInit(): void {
 
-    localStorage.setItem('apiKey', 'your-api-key');
-const apiKeyyy = localStorage.getItem('apiKey');
-console.log(apiKeyyy);
+    // localStorage.setItem('apiKey', 'your-api-key');
+    // const apiKeyyy = localStorage.getItem('apiKey');
+    // console.log(apiKeyyy);
 
     this.tmdbService.getTopRatedMovies().subscribe( 
       data => {
         console.log(data.results.length)
         this.movies = data.results;
         console.log(data.results)
-        
+        // setTimeout(() => {
+        //   this.isLoading = false;
+        // }, 200);
+        this.isLoading = false;
       } 
     );
   }
