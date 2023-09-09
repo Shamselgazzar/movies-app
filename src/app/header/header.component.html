@@ -25,7 +25,9 @@
         </li>
       </ul>
 
-      <ul class="navbar-nav ms-auto">
+      <div class="flex-grow-1"></div> 
+
+      <ul class="navbar-nav ">
         <li *ngIf="!isLoggedIn" class="nav-item" routerLinkActive="active" style="cursor: pointer; " id="loginButton">
           <a [routerLink]="['/login']" *ngIf="!isLoggedIn" class="nav-link">Login Here!</a>
         </li>
