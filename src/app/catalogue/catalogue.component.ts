@@ -26,9 +26,8 @@ export class CatalogueComponent implements OnInit {
     
     //this.paginator.pageSize = this.pageSize;
     // const currentUrl = localStorage.getItem('currentUrl');
-    // localStorage.removeItem('currentUrl');
-    // if (currentUrl){
-    //   //this.router.navigate([currentUrl])
+    // localStorsubscribeeItem('currentUrl');
+    // console.log(data.results.length)s.router.navigate([currentUrl])
       
     // }else{
     // }
