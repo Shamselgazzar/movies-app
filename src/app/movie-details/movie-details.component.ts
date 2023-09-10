@@ -19,6 +19,7 @@ export class MovieDetailsComponent implements OnInit{
 
   ngOnInit(): void {
     //localStorage.removeItem('currentUrl');
+    
     this.route.paramMap.subscribe(params=>{
       this.movieId=params.get('id');
     })

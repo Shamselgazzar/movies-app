@@ -25,6 +25,7 @@ export class CatalogueComponent implements OnInit {
   constructor (private tmdbService : TmdbService, private router: Router, private location: Location, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+
     this.route.queryParams.subscribe(params => {
       
       const receivedData = params['category'];
@@ -32,13 +33,8 @@ export class CatalogueComponent implements OnInit {
       this.filter = receivedData;
       this.fetchMovies();
     });
-
-    localStorage.setItem('currentUrl', this.location.path());
-
     
-
-   
-
+    localStorage.setItem('currentUrl', this.location.path());
 
   }
 
