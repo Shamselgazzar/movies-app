@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
+import { Location } from '@angular/common';
 
 import { TmdbService } from './tmdb.service';
 import { Router } from '@angular/router';
@@ -15,17 +15,24 @@ export class CatalogueComponent implements OnInit {
   titleee = 'catalog';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  pageSize = 10;
+  //pageSize = 10;
   isLoading = true;
   //loadMore : boolean = false;
   movies : any[] = [];
 
-  constructor (private tmdbService : TmdbService, private router: Router) {}
+  constructor (private tmdbService : TmdbService, private router: Router, private location: Location) {}
 
   ngOnInit(): void {
     
     //this.paginator.pageSize = this.pageSize;
-    
+    // const currentUrl = localStorage.getItem('currentUrl');
+    // localStorage.removeItem('currentUrl');
+    // if (currentUrl){
+    //   //this.router.navigate([currentUrl])
+      
+    // }else{
+    // }
+    localStorage.setItem('currentUrl', this.location.path());
     this.tmdbService.getTopRatedMovies().subscribe( 
       data => {
         console.log(data.results.length)
@@ -37,6 +44,10 @@ export class CatalogueComponent implements OnInit {
         this.isLoading = false;
       } 
     );
+
+   
+
+
   }
 
   loadMoreMovies(){

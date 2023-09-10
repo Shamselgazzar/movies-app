@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+
 import { TmdbService } from '../catalogue/tmdb.service';
 import { Movie } from './movie';
 
@@ -10,21 +12,28 @@ import { Movie } from './movie';
   styleUrls: ['./movie-details.component.css']
 })
 export class MovieDetailsComponent implements OnInit{
-  movieId !: string;
+  movieId : any;
   movie !: Movie;
  
-  constructor(private route: ActivatedRoute, private movieService: TmdbService){}
+  constructor(private route: ActivatedRoute, private location: Location, private movieService: TmdbService){}
 
   ngOnInit(): void {
-    const movieId = this.route.snapshot.params['id'];
-    this.movieId = movieId;
-      if (movieId) {
-        this.movieService.getMovieDetails(movieId).subscribe(
-          data => {
-            this.movie  = data;
-            console.log(this.movie);            
-        });
-      }
+    //localStorage.removeItem('currentUrl');
+    this.route.paramMap.subscribe(params=>{
+      this.movieId=params.get('id');
+    })
+
+    if (this.movieId) {
+      this.movieService.getMovieDetails(this.movieId).subscribe(
+        data => {
+          this.movie  = data;
+          console.log(this.movie);            
+      });
+    }
+
+      // console.log(this.location.path());
+      localStorage.setItem('currentUrl', this.location.path());
+      //this.router.navigate(['/login']);
   }
 
   getGenres(): string {

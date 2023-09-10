@@ -24,7 +24,11 @@ export class LoginComponent implements OnInit{
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     if (isLoggedIn === 'true') {
     this.authService.setLoggedIn(true);
-    this.router.navigate(['/home']);
+    if(localStorage.getItem('currentUrl')){
+      this.router.navigate([localStorage.getItem('currentUrl')]);
+    }else{
+      this.router.navigate(['/home']);
+    }
     } 
   }
   
