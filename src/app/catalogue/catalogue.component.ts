@@ -24,13 +24,6 @@ export class CatalogueComponent implements OnInit {
 
   ngOnInit(): void {
     
-    //this.paginator.pageSize = this.pageSize;
-    // const currentUrl = localStorage.getItem('currentUrl');
-    // localStorsubscribeeItem('currentUrl');
-    // console.log(data.results.length)s.router.navigate([currentUrl])
-      
-    // }else{
-    // }
     localStorage.setItem('currentUrl', this.location.path());
     this.tmdbService.getTopRatedMovies().subscribe( 
       data => {
@@ -63,9 +56,7 @@ export class CatalogueComponent implements OnInit {
     );
   }
 
-  // onPageChange(event: any){
-  //   console.log(event.pageIndex);
-  // }
+
   
   goUp(){
       window.scrollTo({ top: 0, behavior: 'smooth' });
