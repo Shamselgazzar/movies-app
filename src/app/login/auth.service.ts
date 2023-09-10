@@ -3,8 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subscription, lastValueFrom } from 'rxjs';
 
 
-//import * as usersData from 'assets/users.json';
-
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +11,7 @@ import { BehaviorSubject, Observable, Subscription, lastValueFrom } from 'rxjs';
 export class AuthService {
   private usersUrl = 'assets/users.json'
 
-  private isAuthenticated : boolean = false;
+  
   user!:any;
   users : any[] | undefined;
 
@@ -28,11 +26,11 @@ export class AuthService {
     try {
       this.users  = await this.getUsers();
       const user = this.users.find((u) => u.email === email && u.password === password);
-      this.isAuthenticated = !!user;
+      
       this.isAuthenticatedSubject.next(!!user);
       this.user = user;
       localStorage.setItem('isLoggedIn', 'true');
-      console.log('AuthService says this user is authenticated = '+this.isAuthenticated)
+      console.log('AuthService says this user is authenticated = '+!!user)
       return !!user;
     } catch (error) {
       console.error('myError authenticating user:', error);

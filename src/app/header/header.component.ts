@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../login/auth.service';
-import { Subscription } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
+
+import {  Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
@@ -12,7 +12,6 @@ import { Location } from '@angular/common';
 export class HeaderComponent implements OnInit{
   isLoggedIn !: Boolean;
   isNewUser : Boolean = true;
-  private userSub !: Subscription;
   currentRoutePath: string = 'empty url';
 
   constructor( private authService: AuthService, private router: Router, private location: Location){}
