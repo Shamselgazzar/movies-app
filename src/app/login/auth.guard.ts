@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
     });
     
     if (this.isLoggedIn) {
-      console.log("we are in");
+      console.log("authGuard says hi");
       return true;
     } else {
       

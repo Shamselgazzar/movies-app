@@ -16,22 +16,27 @@ export class LoginComponent implements OnInit{
   email: string = '';
   password: string = '';
   @ViewChild('f') myform !: NgForm;
-
+  isLoggedIn = localStorage.getItem('isLoggedIn');
 
   constructor(private authService : AuthService, private router : Router){}
 
   ngOnInit(): void {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    if (isLoggedIn === 'true') {
-    this.authService.setLoggedIn(true);
-    if(localStorage.getItem('currentUrl')){
-      this.router.navigate([localStorage.getItem('currentUrl')]);
-    }else{
-      this.router.navigate(['/home']);
-    }
-    } 
+    this.checkLogIn()
+
+    
   }
   
+  checkLogIn(){
+    if (this.isLoggedIn === 'true') {
+      this.authService.setLoggedIn(true);
+      if(localStorage.getItem('currentUrl')){
+        this.router.navigate([localStorage.getItem('currentUrl')]);
+      }else{
+        this.router.navigate(['/home']);
+      }
+      } 
+  }
+
   async login(email: any, password:any) {
     try{
       console.log('Logging in...');

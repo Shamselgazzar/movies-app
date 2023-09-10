@@ -15,7 +15,7 @@ import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './login/auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -27,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent
   ],
   imports: [
+    BsDropdownModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -34,6 +35,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatProgressSpinnerModule,
     MatPaginatorModule,
     BrowserAnimationsModule
+    
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

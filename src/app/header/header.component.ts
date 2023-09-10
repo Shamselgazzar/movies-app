@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../login/auth.service';
 
-import {  Router } from '@angular/router';
+import {  ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { TmdbService } from '../catalogue/tmdb.service';
 
 @Component({
   selector: 'app-header',
@@ -13,11 +14,13 @@ export class HeaderComponent implements OnInit{
   isLoggedIn !: Boolean;
   isNewUser : Boolean = true;
   currentRoutePath: string = 'empty url';
+  categoryFilter: any;
 
-  constructor( private authService: AuthService, private router: Router, private location: Location){}
+  constructor( private authService: AuthService, private router: Router, private location: Location, private movieService: TmdbService, private route: ActivatedRoute){}
 
   ngOnInit(): void {
-    
+    this.categoryFilter = this.movieService.filter.subscribe();
+
     console.log(this.location.path());
 
     this.authService.isAuthenticatedCheck().subscribe((authenticated) => {
@@ -33,9 +36,17 @@ export class HeaderComponent implements OnInit{
     
   }
  
-  // switchLang(){
-  //   this.localSerive.switchLanguage();
-  // }
+  category(action:string){
+    // this.categoryFilter.next(action);
+    // this.router.navigate([this.location.path]);
+    // this.categoryFilter.next(action);
 
+    this.router.navigate(['/home'], {
+      relativeTo: this.route,
+      queryParams: { category : action }
+    });
+    
+  }
+    
  
 }

@@ -23,6 +23,13 @@ export class MovieDetailsComponent implements OnInit{
       this.movieId=params.get('id');
     })
 
+    this.getMovie()
+    
+    localStorage.setItem('currentUrl', this.location.path());
+      
+  }
+
+  getMovie(){
     if (this.movieId) {
       this.movieService.getMovieDetails(this.movieId).subscribe(
         data => {
@@ -30,10 +37,6 @@ export class MovieDetailsComponent implements OnInit{
           console.log(this.movie);            
       });
     }
-
-      // console.log(this.location.path());
-      localStorage.setItem('currentUrl', this.location.path());
-      //this.router.navigate(['/login']);
   }
 
   getGenres(): string {
