@@ -12,6 +12,8 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 
 export class CatalogueComponent implements OnInit {
+  titleee = 'catalog';
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   pageSize = 10;
   isLoading = true;
@@ -24,10 +26,6 @@ export class CatalogueComponent implements OnInit {
     
     //this.paginator.pageSize = this.pageSize;
     
-    // localStorage.setItem('apiKey', 'your-api-key');
-    // const apiKeyyy = localStorage.getItem('apiKey');
-    // console.log(apiKeyyy);
-
     this.tmdbService.getTopRatedMovies().subscribe( 
       data => {
         console.log(data.results.length)
@@ -55,9 +53,9 @@ export class CatalogueComponent implements OnInit {
     );
   }
 
-  onPageChange(event: any){
-    console.log(event.pageIndex);
-  }
+  // onPageChange(event: any){
+  //   console.log(event.pageIndex);
+  // }
   
   goUp(){
       window.scrollTo({ top: 0, behavior: 'smooth' });

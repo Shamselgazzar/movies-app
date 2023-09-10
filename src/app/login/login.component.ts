@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { AuthService } from './auth.service';
@@ -12,13 +12,21 @@ import { Router } from '@angular/router';
 })
 
 
-export class LoginComponent{
+export class LoginComponent implements OnInit{
   email: string = '';
   password: string = '';
   @ViewChild('f') myform !: NgForm;
 
 
   constructor(private authService : AuthService, private router : Router){}
+
+  ngOnInit(): void {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn === 'true') {
+    this.authService.setLoggedIn(true);
+    this.router.navigate(['/home']);
+    } 
+  }
   
   async login(email: any, password:any) {
     try{

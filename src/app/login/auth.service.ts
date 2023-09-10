@@ -31,6 +31,7 @@ export class AuthService {
       this.isAuthenticated = !!user;
       this.isAuthenticatedSubject.next(!!user);
       this.user = user;
+      localStorage.setItem('isLoggedIn', 'true');
       console.log('AuthService says this user is authenticated = '+this.isAuthenticated)
       return !!user;
     } catch (error) {
@@ -48,10 +49,17 @@ export class AuthService {
 
   logout(){
     this.isAuthenticatedSubject.next(false);
+    localStorage.removeItem('isLoggedIn');
   }
 
   isAuthenticatedCheck(): Observable<boolean> {
     return this.isAuthenticatedSubject.asObservable();
   }
+
+  setLoggedIn(value: boolean): void {
+    this.isAuthenticatedSubject.next(value);
+  }
+
+
 
 }
