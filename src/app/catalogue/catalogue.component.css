@@ -21,7 +21,7 @@ mat-progress-spinner{
 
 .card-text {
 display: -webkit-box;
--webkit-line-clamp: 2; /* Limit wraping to 2 lines */
+-webkit-line-clamp: 2; /* limit wrapiing to 2 lines */
 -webkit-box-orient: vertical;
 overflow: hidden;
 text-overflow: ellipsis;
