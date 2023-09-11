@@ -1,56 +1,64 @@
-
-
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { CatalogueComponent } from './catalogue.component';
-import { TmdbService } from './tmdb.service'; // Import your movie service or mock data service
-import { of } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { TmdbService } from './tmdb.service';
+
+import { By } from '@angular/platform-browser';
 
 describe('CatalogueComponent', () => {
   let component: CatalogueComponent;
   let fixture: ComponentFixture<CatalogueComponent>;
-  let tmdbService: TmdbService; // Your movie service or mock data service
+  let tmdbService: TmdbService;
 
-  // Mock movie data for testing
-  const mockMovies = [
+  const testMovies = [
     { id: 1, title: 'Movie 1', overview: 'Overview 1' },
     { id: 2, title: 'Movie 2', overview: 'Overview 2' },
   ];
 
   beforeEach(() => {
+    const mock = {
+      getTopRatedMovies: jasmine.createSpy('getTopRatedMovies').and.returnValue(Promise.resolve({results:testMovies}))
+    }
     TestBed.configureTestingModule({
       declarations: [CatalogueComponent],
+      imports: [HttpClientModule, MatProgressSpinnerModule],
       providers: [
         {
-          provide: TmdbService, // Provide your movie service or mock data service
-          useValue: {
-            getPopularMovies: () => of(mockMovies), // Mock the getPopularMovies method
-          },
+          provide: TmdbService,
+          useValue: mock,
         },
       ],
     });
     fixture = TestBed.createComponent(CatalogueComponent);
-    component = fixture.componentInstance;
-    tmdbService = TestBed.inject(TmdbService); // Inject the movie service
-
-    fixture.detectChanges(); // Trigger change detection
+    component = fixture.debugElement.componentInstance;
+    tmdbService = TestBed.inject(TmdbService);
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize movies correctly', () => {
-    expect(component.movies).toEqual(mockMovies); // Check if movies are initialized correctly
-  });
+  it('should initialize movies correctly', fakeAsync(() => {
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+    fixture.whenStable().then(()=>{
+      expect(component.movies).toEqual(testMovies);
+    })
+    
+  }));
 
-  it('should render movies in the DOM', () => {
-    fixture.detectChanges(); // Trigger change detection
-    const movieElements = fixture.nativeElement.querySelectorAll('.card-title');
-    expect(movieElements.length).toBe(mockMovies.length); // Check if the correct number of movies are rendered
-
-    // Check if movie titles are rendered correctly
-    movieElements.forEach((movieElement: { textContent: any}, index: number) => {
-      expect(movieElement.textContent).toContain(mockMovies[index].title);
+  it('should load movies into the DOM', () => {
+    fixture.detectChanges(); 
+    const movieElements = fixture.debugElement.queryAll(By.css('.movie-item'));
+    fixture.whenStable().then(()=>{
+      expect(movieElements.length).toBe(testMovies.length);
+      })
+    
     });
+  
   });
-});
+
+  
+
