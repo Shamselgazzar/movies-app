@@ -11,9 +11,9 @@ import { TmdbService } from '../catalogue/tmdb.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit{
-  isLoggedIn !: Boolean;
-  isNewUser : Boolean = true;
-  currentRoutePath: string = 'empty url';
+  isLoggedIn !: boolean;
+  isNewUser  = true;
+  currentRoutePath = 'empty url';
   categoryFilter: any;
 
   constructor( private authService: AuthService, private router: Router, private location: Location, private movieService: TmdbService, private route: ActivatedRoute){}

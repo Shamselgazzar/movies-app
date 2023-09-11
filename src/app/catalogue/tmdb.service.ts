@@ -23,7 +23,7 @@ export class TmdbService {
     return this.http.get(url0);
   }
 
-  getMovies(pageNumber: number = this.pageNumber, movieType: string = 'topRated'): Observable<any> {
+  getMovies(pageNumber: number = this.pageNumber, movieType = 'topRated'): Observable<any> {
     let apiUrl: string;
     switch (movieType) {
       case 'popular':

@@ -13,8 +13,8 @@ import { Router } from '@angular/router';
 
 
 export class LoginComponent implements OnInit{
-  email: string = '';
-  password: string = '';
+  email = '';
+  password = '';
   @ViewChild('f') myform !: NgForm;
   isLoggedIn = localStorage.getItem('isLoggedIn');
 

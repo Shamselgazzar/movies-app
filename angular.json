@@ -5,9 +5,9 @@
   "projects": {
     "movies-app": {
       "i18n": {
-        "sourceLocale":"en-US",
-        "locales": { 
-          "ar":"src/locale/messages.ar.xlf"
+        "sourceLocale": "en-US",
+        "locales": {
+          "ar": "src/locale/messages.ar.xlf"
         }
       },
       "projectType": "application",
@@ -41,7 +41,6 @@
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-              
             ]
           },
           "configurations": {
@@ -107,8 +106,22 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
