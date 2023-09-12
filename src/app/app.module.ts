@@ -1,43 +1,28 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CatalogueComponent } from './core/catalogue/catalogue.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { MovieDetailsComponent } from './core/movie-details/movie-details.component';
-import { AboutComponent } from './core/about/about.component';
-import { LoginComponent } from './authentication/login/login.component';
-import { AuthService } from './authentication/auth.service';
+import { CoreModule } from './core/core.module';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CatalogueComponent,
-    HeaderComponent,
-    MovieDetailsComponent,
-    AboutComponent,
-    LoginComponent
+    AppComponent
   ],
   imports: [
-    BsDropdownModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    MatProgressSpinnerModule,
-    MatPaginatorModule,
-    BrowserAnimationsModule
-    
+    BrowserAnimationsModule,
+    CoreModule,
+    AuthenticationModule,
+    SharedModule
   ],
-  providers: [AuthService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
