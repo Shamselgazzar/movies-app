@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
-import { TmdbService } from './tmdb.service';
+import { TmdbService } from '../../services/tmdb.service';
 
 
 
@@ -16,7 +16,7 @@ export class CatalogueComponent implements OnInit {
 
   isLoading = true;
   movies : any[] = [];
-  filter = 'topRated';
+  filter : string | undefined;
   
   constructor (
     private tmdbService : TmdbService,

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {  ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { AuthService } from '../login/auth.service';
-import { TmdbService } from '../catalogue/tmdb.service';
+import { AuthService } from '../../authentication/auth.service';
+import { TmdbService } from '../../services/tmdb.service';
 
 @Component({
   selector: 'app-header',

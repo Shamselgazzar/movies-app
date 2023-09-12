@@ -2,9 +2,10 @@ import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testin
 import { CatalogueComponent } from './catalogue.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { TmdbService } from './tmdb.service';
-
 import { By } from '@angular/platform-browser';
+
+import { TmdbService } from '../../services/tmdb.service';
+
 
 describe('CatalogueComponent', () => {
   let component: CatalogueComponent;
