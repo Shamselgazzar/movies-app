@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,8 +16,6 @@ import { MovieDetailsComponent } from './core/movie-details/movie-details.compon
 import { AboutComponent } from './core/about/about.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { AuthService } from './authentication/auth.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
