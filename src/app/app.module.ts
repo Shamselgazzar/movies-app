@@ -8,12 +8,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CatalogueComponent } from './catalogue/catalogue.component';
-import { HeaderComponent } from './header/header.component';
-import { MovieDetailsComponent } from './movie-details/movie-details.component';
-import { AboutComponent } from './about/about.component';
-import { LoginComponent } from './login/login.component';
-import { AuthService } from './login/auth.service';
+import { CatalogueComponent } from './core/catalogue/catalogue.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { MovieDetailsComponent } from './core/movie-details/movie-details.component';
+import { AboutComponent } from './core/about/about.component';
+import { LoginComponent } from './authentication/login/login.component';
+import { AuthService } from './authentication/auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 

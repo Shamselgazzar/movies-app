@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CatalogueComponent } from './catalogue/catalogue.component';
-import { MovieDetailsComponent } from './movie-details/movie-details.component';
-import { AboutComponent } from './about/about.component';
-import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './login/auth.guard';
+import { CatalogueComponent } from './core/catalogue/catalogue.component';
+import { MovieDetailsComponent } from './core/movie-details/movie-details.component';
+import { AboutComponent } from './core/about/about.component';
+import { LoginComponent } from './authentication/login/login.component';
+import { AuthGuard } from './authentication/auth.guard';
 
 const routes: Routes = [
   { path: 'home',

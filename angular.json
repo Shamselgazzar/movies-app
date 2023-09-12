@@ -20,7 +20,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "localize": [
-              "ar"
+              "en-US"
             ],
             "outputPath": "dist/movies-app",
             "index": "src/index.html",
