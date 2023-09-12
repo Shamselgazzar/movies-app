@@ -1,3 +1,4 @@
+/* fixed header stying */
 app-header {
     position: fixed;
     top: 0;
@@ -6,11 +7,9 @@ app-header {
     z-index: 1000; 
   }
 
+/* app body styling */
 .container-fluid{
     padding-top: 70px;
+    padding-bottom: 10px;
 }
 
-.container-fluid{
-  /* background-color: #f1f1f1; */
-  padding-bottom: 10px;
-}

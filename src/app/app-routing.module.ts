@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { AboutComponent } from './about/about.component';
