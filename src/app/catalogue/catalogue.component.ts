@@ -26,12 +26,12 @@ export class CatalogueComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.checkCategory$fetchMovies();
+    this.checkCategoryAndFetchMovies();
 
     localStorage.setItem('currentUrl', this.location.path());
   }
 
-  checkCategory$fetchMovies(){
+  checkCategoryAndFetchMovies(){
 
     this.route.queryParams.subscribe(params => {
       
@@ -39,6 +39,7 @@ export class CatalogueComponent implements OnInit {
       console.log('category: ', receivedData);
       
       this.filter = receivedData;
+
       this.fetchMovies();
       
     });

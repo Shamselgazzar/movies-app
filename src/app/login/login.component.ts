@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -37,7 +37,9 @@ export class LoginComponent implements OnInit{
       }else{
         this.router.navigate(['/home']);
       }
-      } 
+    }else{
+      console.log('user is not logged in..');
+    } 
   }
 
   async login(email: any, password:any) {

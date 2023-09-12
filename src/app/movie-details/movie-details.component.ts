@@ -24,14 +24,18 @@ export class MovieDetailsComponent implements OnInit{
 
   ngOnInit(): void {
 
-    this.route.paramMap.subscribe(params=>{
-      this.movieId=params.get('id');
-    })
+    this.getMovieId();
 
-    this.getMovie()
+    this.getMovie();
     
     localStorage.setItem('currentUrl', this.location.path());
       
+  }
+
+  getMovieId(){
+    this.route.paramMap.subscribe(params=>{
+      this.movieId=params.get('id');
+    });
   }
 
   getMovie(){
@@ -41,6 +45,8 @@ export class MovieDetailsComponent implements OnInit{
           this.movie  = data;
           console.log(this.movie);            
       });
+    }else{
+      console.log('There is no movie id aquired to fetch data for...')
     }
   }
 
@@ -48,7 +54,6 @@ export class MovieDetailsComponent implements OnInit{
   getGenres(): string {
     return this.movie.genres.map(genre => genre.name).join(', ');
   }
-
   getProductionCompanies(): string {
     return this.movie.production_companies.map(company => company.name).join(', ');
 }
