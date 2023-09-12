@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
@@ -13,8 +13,7 @@ import { TmdbService } from './tmdb.service';
 })
 
 export class CatalogueComponent implements OnInit {
-  titleee = 'catalog';
- 
+
   isLoading = true;
   movies : any[] = [];
   filter = 'topRated';
@@ -22,19 +21,27 @@ export class CatalogueComponent implements OnInit {
   constructor (
     private tmdbService : TmdbService,
     private location: Location,
-    private route: ActivatedRoute) {}
+    private route: ActivatedRoute
+    ) {}
 
   ngOnInit(): void {
     
+    this.checkCategory$fetchMovies();
+
+    localStorage.setItem('currentUrl', this.location.path());
+  }
+
+  checkCategory$fetchMovies(){
+
     this.route.queryParams.subscribe(params => {
+      
       const receivedData = params['category'];
       console.log('category: ', receivedData);
+      
       this.filter = receivedData;
       this.fetchMovies();
       
     });
-    
-    localStorage.setItem('currentUrl', this.location.path());
   }
 
   fetchMovies(){

@@ -1,4 +1,4 @@
-
+/* spinner styles */
 .spinner-container {
   position: fixed;
   top: 0;
@@ -18,7 +18,7 @@ mat-progress-spinner{
 }
 
 
-
+/* card styles */
 .card-text {
 display: -webkit-box;
 -webkit-line-clamp: 2; /* limit wrapiing to 2 lines */
@@ -26,14 +26,13 @@ display: -webkit-box;
 overflow: hidden;
 text-overflow: ellipsis;
 }
-
 .card-title {
 white-space: nowrap;    
 overflow: hidden;
 text-overflow: ellipsis;
 }
     
-
+/* buttons styles */
 #goUp {
   position: fixed;
   bottom: 70px;
@@ -51,7 +50,6 @@ button.move{
   
   /* border: 0.5px solid black; */
 }
-
 button.more{
   opacity: 90%;
 }

@@ -1,16 +1,15 @@
 
-
+/* image styling */
 .container-fluid .row .col-md-4{
     text-align: center;
     margin-bottom: 10px;
 }
 
+
+/* buttons styling */
+.buttons{
+    text-align: center;
+}
 button{
     margin: 5px;
 }
-.buttons{
-    text-align: center;
-    /* background-color: rgb(33 37 41); */
-    
-}
-

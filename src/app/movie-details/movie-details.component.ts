@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { TmdbService } from '../catalogue/tmdb.service';
@@ -12,14 +12,18 @@ import { Movie } from './movie';
   styleUrls: ['./movie-details.component.css']
 })
 export class MovieDetailsComponent implements OnInit{
+
   movieId : any;
   movie !: Movie;
  
-  constructor(private route: ActivatedRoute, private location: Location, private movieService: TmdbService){}
+  constructor(
+    private route: ActivatedRoute,
+    private location: Location,
+    private movieService: TmdbService
+      ){}
 
   ngOnInit(): void {
-    //localStorage.removeItem('currentUrl');
-    
+
     this.route.paramMap.subscribe(params=>{
       this.movieId=params.get('id');
     })
@@ -40,8 +44,8 @@ export class MovieDetailsComponent implements OnInit{
     }
   }
 
+  // Movie object in object data handling
   getGenres(): string {
-
     return this.movie.genres.map(genre => genre.name).join(', ');
   }
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../login/auth.service';
-
 import {  ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+
+import { AuthService } from '../login/auth.service';
 import { TmdbService } from '../catalogue/tmdb.service';
 
 @Component({
@@ -16,18 +16,25 @@ export class HeaderComponent implements OnInit{
   currentRoutePath = 'empty url';
   categoryFilter: any;
 
-  constructor( private authService: AuthService, private router: Router, private location: Location, private movieService: TmdbService, private route: ActivatedRoute){}
+  constructor( private authService: AuthService,
+    private router: Router,
+    private location: Location,
+    private movieService: TmdbService,
+    private route: ActivatedRoute
+    ){}
 
   ngOnInit(): void {
-    this.categoryFilter = this.movieService.filter.subscribe();
 
     console.log(this.location.path());
 
+    this.checkLoginStatus();
+  
+  }
+
+  checkLoginStatus(){
     this.authService.isAuthenticatedCheck().subscribe((authenticated) => {
       this.isLoggedIn = authenticated;
     });
-  
-
   }
 
   logout(){
@@ -37,15 +44,16 @@ export class HeaderComponent implements OnInit{
   }
  
   category(action:string){
-    // this.categoryFilter.next(action);
-    // this.router.navigate([this.location.path]);
-    // this.categoryFilter.next(action);
 
     this.router.navigate(['/home'], {
       relativeTo: this.route,
       queryParams: { category : action }
     });
-    
+
+    // planning to use this code later
+    // this.categoryFilter.next(action);
+    //this.categoryFilter = this.movieService.filter.subscribe(
+    // this.router.navigate([this.location.path]););
   }
     
  
