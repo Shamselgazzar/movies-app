@@ -88,7 +88,7 @@
               ]
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "popular"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -98,6 +98,8 @@
             },
             "development": {
               "browserTarget": "movies-app:build:development"
+            },"popular": {
+              "browserTarget": "movies-app:build:popular"
             }
           },
           "defaultConfiguration": "development"

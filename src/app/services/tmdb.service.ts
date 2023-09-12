@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+import {environment} from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +13,7 @@ export class TmdbService {
 
   private pageNumber  = 1;
   public counter = 1;
-  private apiKey = '52d48651a5c52ca72ab4d544cf817d92';
+  private apiKey = environment.apiKey;
   // private apiUrl = 'https://api.themoviedb.org/3';
   // private url = `${this.apiUrl}/movie/popular?api_key=${this.apiKey}`;
 
@@ -23,8 +25,10 @@ export class TmdbService {
     return this.http.get(url0);
   }
 
-  getMovies(pageNumber: number = this.pageNumber, movieType = 'topRated'): Observable<any> {
+  getMovies(pageNumber: number = this.pageNumber, movieType = environment.movieType): Observable<any> {
     let apiUrl: string;
+    console.log(environment.configuration);
+    console.log('env var: '+ environment.movieType);
     switch (movieType) {
       case 'popular':
         apiUrl = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=' + pageNumber + '&api_key=' + this.apiKey;

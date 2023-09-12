@@ -16,7 +16,7 @@ export class CatalogueComponent implements OnInit {
 
   isLoading = true;
   movies : any[] = [];
-  filter = 'topRated';
+  filter : string | undefined;
   
   constructor (
     private tmdbService : TmdbService,
