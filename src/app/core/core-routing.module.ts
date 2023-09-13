@@ -6,15 +6,15 @@ import { CatalogueComponent } from './catalogue/catalogue.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 const routes: Routes = [
-  { path: 'home',
-   component: CatalogueComponent,
-    canActivate: [AuthGuard]
+  {
+    path: '',
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', component: CatalogueComponent }, 
+      { path: 'movie-details/:id', component: MovieDetailsComponent },
+    ],
   },
-  { path: 'movie-details/:id',
-   component: MovieDetailsComponent,
-    canActivate: [AuthGuard]
-  },
-  { path: 'about', component: AboutComponent },
+  { path: 'about', component: AboutComponent }
 ];
 
 @NgModule({
