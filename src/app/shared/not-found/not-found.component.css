@@ -1,4 +1,4 @@
-
+/* 404 message styling */
 .main-container {
     position: fixed;
     top: 0;
@@ -8,7 +8,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
   }
   .not-found-container{
     text-align: center;
