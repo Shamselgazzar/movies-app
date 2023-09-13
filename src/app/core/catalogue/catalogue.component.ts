@@ -32,14 +32,10 @@ export class CatalogueComponent implements OnInit {
   }
 
   checkCategoryAndFetchMovies(){
-
     this.route.queryParams.subscribe(params => {
-      
       const receivedData = params['category'];
       console.log('category: ', receivedData);
-      
       this.filter = receivedData;
-
       this.fetchMovies();
       
     });

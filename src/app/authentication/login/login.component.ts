@@ -25,10 +25,12 @@ export class LoginComponent implements OnInit{
      ){}
 
   ngOnInit(): void {
+
     this.checkLogIn()
     
   }
   
+  // runs in ngOnInit
   checkLogIn(){
     if (this.isLoggedIn === 'true') {
       this.authService.setLoggedIn(true);
@@ -42,6 +44,19 @@ export class LoginComponent implements OnInit{
     } 
   }
 
+  // form submit function
+  onSubmit(form: NgForm){
+    console.log('Form submitting...');
+    console.log(form);
+    this.email = form.value.email;
+    this.password = form.value.password;
+    console.log('Form is submitted...');
+    this.login(form.value.email, form.value.password);
+    form.reset();
+    
+  }
+
+  // used in the onSubmit function
   async login(email: any, password:any) {
     try{
       console.log('Logging in...');
@@ -59,15 +74,4 @@ export class LoginComponent implements OnInit{
     }
   }
 
-  onSubmit(form: NgForm){
-    console.log('Form submitting...');
-    console.log(form);
-    this.email = form.value.email;
-    this.password = form.value.password;
-    console.log('Form is submitted...');
-    this.login(form.value.email, form.value.password);
-    form.reset();
-    
-  }
-  
 }

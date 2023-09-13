@@ -47,8 +47,6 @@ text-overflow: ellipsis;
 }
 button.move{
   border-radius: 100%;
-  
-  /* border: 0.5px solid black; */
 }
 button.more{
   opacity: 90%;
