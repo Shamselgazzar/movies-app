@@ -10,8 +10,9 @@ const routes: Routes = [
     path: '',
     canActivate: [AuthGuard],
     children: [
-      { path: '', component: CatalogueComponent }, 
+       
       { path: 'movie-details/:id', component: MovieDetailsComponent },
+      { path: 'home', component: CatalogueComponent },
     ],
   },
   { path: 'about', component: AboutComponent }
