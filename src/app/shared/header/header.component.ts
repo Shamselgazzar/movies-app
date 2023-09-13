@@ -3,7 +3,6 @@ import {  ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { AuthService } from '../../authentication/auth.service';
-import { TmdbService } from '../../services/tmdb.service';
 
 @Component({
   selector: 'app-header',
@@ -14,12 +13,11 @@ export class HeaderComponent implements OnInit{
   isLoggedIn !: boolean;
   isNewUser  = true;
   currentRoutePath = 'empty url';
-  categoryFilter: any;
+  categoryFilter!: 'string';
 
   constructor( private authService: AuthService,
     private router: Router,
     private location: Location,
-    private movieService: TmdbService,
     private route: ActivatedRoute
     ){}
 
@@ -49,11 +47,6 @@ export class HeaderComponent implements OnInit{
       relativeTo: this.route,
       queryParams: { category : action }
     });
-
-    // planning to use this code later
-    // this.categoryFilter.next(action);
-    //this.categoryFilter = this.movieService.filter.subscribe(
-    // this.router.navigate([this.location.path]););
   }
     
  
