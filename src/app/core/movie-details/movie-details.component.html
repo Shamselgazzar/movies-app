@@ -1,46 +1,45 @@
-<!-- <p>movie-details works!</p> -->
 
 
-  <div class="container-fluid" *ngIf="movie">
-    <div class="row">
+<div class="container-fluid" *ngIf="movie">
+  <div class="row">
 
-      <div class="col-md-4" >
-        <img class="img-fluid" src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}">
-      </div>
-
-      <div class="col-md-8">
-
-        <h1>{{ movie.title }}</h1>
-        <p class="mt-4"><strong>Tagline:</strong> {{ movie.tagline }}</p>
-        <p><strong>Overview:</strong></p>
-        <p>{{ movie.overview }}</p>
-
-        <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
-        <p><strong>Runtime:</strong> {{ movie.runtime }} minutes</p>
-        <p><strong>Genres:</strong> {{ getGenres() }}</p>
-        <p><strong>Production Companies:</strong> {{ getProductionCompanies() }}</p>
-        <p><strong>Spoken Languages:</strong> {{ getSpokenLanguages() }}</p>
-        <p><strong>Vote Average:</strong> {{ movie.vote_average }}</p>
-        <p><strong>Vote Count:</strong> {{ movie.vote_count }}</p>
-        <p><strong>IMDB Rating:</strong> {{ movie.vote_average }}</p> 
-      </div>
+    <div class="col-md-4" >
+      <img class="img-fluid" src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}">
     </div>
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="buttons ">
-                <button class="btn btn-primary" [routerLink]="['/home']"  >Back to Catalog</button>
-            
-                <a href="https://www.imdb.com/title/{{movie.imdb_id}}" target="_blank" *ngIf="movie.imdb_id">
-                    <button class="btn btn-warning"  style="font-weight: bolder;">IMDb Link</button>
-                </a>
-    
-                <a href="https://www.themoviedb.org/movie/{{movie.id}}" target="_blank" *ngIf="movie.imdb_id">
-                    <button class="btn btn-success" style="font-weight: bolder;">TMDb Link</button>
-                </a>
-            </div>
-        </div>
+    <div class="col-md-8">
+
+      <h1>{{ movie.title }}</h1>
+      <p class="mt-4"><strong>Tagline:</strong> {{ movie.tagline }}</p>
+      <p><strong>Overview:</strong></p>
+      <p>{{ movie.overview }}</p>
+
+      <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+      <p><strong>Runtime:</strong> {{ movie.runtime }} minutes</p>
+      <p><strong>Genres:</strong> {{ getGenres() }}</p>
+      <p><strong>Production Companies:</strong> {{ getProductionCompanies() }}</p>
+      <p><strong>Spoken Languages:</strong> {{ getSpokenLanguages() }}</p>
+      <p><strong>Vote Average:</strong> {{ movie.vote_average }}</p>
+      <p><strong>Vote Count:</strong> {{ movie.vote_count }}</p>
+      <p><strong>IMDB Rating:</strong> {{ movie.vote_average }}</p> 
     </div>
-
-
   </div>
+
+  <div class="row">
+      <div class="col-md-12">
+          <div class="buttons ">
+              <button class="btn btn-primary" [routerLink]="['/home']"  >Back to Catalog</button>
+          
+              <a href="https://www.imdb.com/title/{{movie.imdb_id}}" target="_blank" *ngIf="movie.imdb_id">
+                  <button class="btn btn-warning"  style="font-weight: bolder;">IMDb Link</button>
+              </a>
+  
+              <a href="https://www.themoviedb.org/movie/{{movie.id}}" target="_blank" *ngIf="movie.imdb_id">
+                  <button class="btn btn-success" style="font-weight: bolder;">TMDb Link</button>
+              </a>
+          </div>
+      </div>
+  </div>
+
+
+</div>
