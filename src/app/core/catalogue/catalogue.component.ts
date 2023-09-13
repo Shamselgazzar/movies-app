@@ -15,6 +15,7 @@ import { TmdbService } from '../../services/tmdb.service';
 export class CatalogueComponent implements OnInit {
 
   isLoading = true;
+  totalPages : any;
   movies : any[] = [];
   filter : string | undefined;
   
@@ -42,9 +43,11 @@ export class CatalogueComponent implements OnInit {
   }
 
   fetchMovies(){
+    this.tmdbService.counter = 1;
     this.tmdbService.getMovies(1,this.filter).subscribe( 
       data => {
         console.log(data.results.length)
+        this.totalPages = data.total_pages;
         this.movies = data.results;
         console.log(data.results)
         this.isLoading = false;
@@ -52,20 +55,28 @@ export class CatalogueComponent implements OnInit {
     );  
   }
 
+  // pagination
   loadMoreMovies(){
     const pageNumber = ++this.tmdbService.counter;
-    console.log('page number is : '+ pageNumber)
-    this.tmdbService.getMovies(pageNumber,this.filter).subscribe( 
-      data => {
-        const newMovies = this.movies.concat( data.results);
-        this.movies= newMovies;
-        console.log('the list length: '+this.movies.length);
-        
-      } 
-    );
+    if(pageNumber <= this.totalPages){
+
+      console.log('loading more movies...')
+      console.log('total pages: '+this.totalPages)
+      console.log('page number is : '+ pageNumber)
+
+      this.tmdbService.getMovies(pageNumber,this.filter).subscribe( 
+        data => {
+          const newMovies = this.movies.concat( data.results);
+          this.movies= newMovies;
+          console.log('the list length: '+this.movies.length);
+        });
+    }else{
+      console.log('No more movies to load...')
+    }
+    
   }
 
-  
+  // floating scroll buttons
   goUp(){
       window.scrollTo({ top: 0, behavior: 'smooth' });
   }
