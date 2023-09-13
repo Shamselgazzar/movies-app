@@ -4,9 +4,7 @@ import { BehaviorSubject, Observable, lastValueFrom } from 'rxjs';
 
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 
 export class AuthService {
   private usersUrl = 'assets/users.json'
