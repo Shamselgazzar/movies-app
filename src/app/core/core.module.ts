@@ -7,6 +7,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { AboutComponent } from './about/about.component';
+import { CoreRoutingModule } from './core-routing.module';
 
 @NgModule({
   declarations: [
@@ -17,13 +18,12 @@ import { AboutComponent } from './about/about.component';
   imports: [
     CommonModule,
     RouterModule,
+    CoreRoutingModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
   ],
   exports: [
-    CatalogueComponent,
-    MovieDetailsComponent,
-    AboutComponent
+    
   ]
 })
 export class CoreModule { }
