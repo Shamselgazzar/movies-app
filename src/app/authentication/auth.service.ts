@@ -50,8 +50,8 @@ export class AuthService {
     localStorage.removeItem('isLoggedIn');
   }
 
-  isAuthenticatedCheck(): Observable<boolean> {
-    return this.isAuthenticatedSubject.asObservable();
+  isAuthenticatedCheck(){
+    return this.isAuthenticatedSubject;
   }
 
   setLoggedIn(value: boolean): void {
