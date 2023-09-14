@@ -10,7 +10,7 @@
 
           <div class="card-body ">
 
-            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <form (ngSubmit)="onSubmit(form)" #form="ngForm">
               
               <div class="mb-3 form-group">
                 <label i18n for="email" class="form-label">Email</label>
@@ -52,7 +52,7 @@
                 <button i18n
                 type="submit" 
                 class="btn btn-primary"
-                [disabled]="f.invalid" >Login</button>
+                [disabled]="form.invalid" >Login</button>
               </div>
 
             </form>

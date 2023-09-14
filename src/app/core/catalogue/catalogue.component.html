@@ -1,16 +1,17 @@
 
 
-<div class="spinner-container" *ngIf="isLoading">
+<div class="spinner-container catalog" *ngIf="isLoading">
   <mat-progress-spinner
-    class="custom-spinner"
+    class="custom-spinner catalog"
     mode="indeterminate"
-    diameter="200"
+    diameter="150"
+    strokeWidth="18"
   ></mat-progress-spinner>
 </div>
 
 <div *ngIf="!isLoading" class="container-fluid" >
   <div class="row">
-    <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let movie of movies"> <!--(movies_ | async)?.results -->
+    <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let movie of movies">
       <div class="card mb-4 shadow">
         <a [routerLink]="['/movie-details',movie.id]" >
           <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="card-img-top" alt="{{ movie.title }}">

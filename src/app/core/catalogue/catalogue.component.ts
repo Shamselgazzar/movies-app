@@ -49,7 +49,7 @@ export class CatalogueComponent implements OnInit {
         console.log(data.results.length)
         this.totalPages = data.total_pages;
         this.movies = data.results;
-        console.log(data.results)
+        console.log(data.results);
         this.isLoading = false;
       } 
     );  

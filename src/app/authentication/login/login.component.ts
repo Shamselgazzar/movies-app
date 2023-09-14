@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit{
 
   email = '';
   password = '';
-  @ViewChild('f') myform !: NgForm;
   isLoggedIn = localStorage.getItem('isLoggedIn');
 
   constructor(

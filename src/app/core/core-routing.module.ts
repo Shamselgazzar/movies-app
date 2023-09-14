@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '../authentication/auth.guard';
+import { HomeGuard } from '../authentication/guards/home.guard';
 import { AboutComponent } from './about/about.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
@@ -8,7 +8,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 const routes: Routes = [
   {
     path: '',
-    canActivate: [AuthGuard],
+    canActivate: [HomeGuard],
     children: [
       { path: 'home', component: CatalogueComponent },
       { path: 'movie-details/:id', component: MovieDetailsComponent },

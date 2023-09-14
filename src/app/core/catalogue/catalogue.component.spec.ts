@@ -78,11 +78,11 @@ describe('CatalogueComponent', () => {
   }));
 
 
-  it('should render title in a h1 tag', fakeAsync(() => {
+  it('should render title in a h1 tag', () => {
     const compiled = fixture.debugElement.nativeElement;
-    tick();
+    
     expect(compiled.querySelector('h6').textContent).toContain('Welcome');
- }));
+ });
 
  
  it('should set filter and fetch movies when queryParams change', () => {
@@ -100,21 +100,22 @@ describe('CatalogueComponent', () => {
 
 
 
-  it('should initialize movies correctly', fakeAsync(() => {
+  it('should initialize movies correctly', (() => {
     component.ngOnInit();
     expect(component.movies.length).toEqual(2);
 
   }));
 
+  
   it('should load movies into the DOM', (() => {
 
     fixture.detectChanges();
     const movieElements = fixture.debugElement.queryAll(By.css('.card'));
-    //fixture.whenStable().then(()=>{
-      console.log(component.filter);
-      console.log(component.movies);
-      expect(movieElements.length).toBe(2);
-    //})
+
+    console.log(component.filter);
+    console.log(component.movies);
+    expect(movieElements.length).toBe(2);
+
   }));
   
 });
