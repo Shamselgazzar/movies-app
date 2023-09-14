@@ -8,8 +8,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./core/core.module').then(
         (m) => m.CoreModule
-      ),
-  },
+      )
+  }
   
   ];
 
