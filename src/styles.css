@@ -17,6 +17,6 @@ body{
     align-items: center;
     z-index: 999; 
   }
-.spinner-container.catalog .custom-spinner.catalog circle{
-    fill:rgb(41, 41, 46);
+.custom-spinner.catalog circle{
+    fill:rgb(54, 54, 59);
   }
