@@ -13,7 +13,7 @@ import { TmdbService } from '../../services/tmdb.service';
 })
 
 export class CatalogueComponent implements OnInit {
-
+  title = 'catalogue';
   isLoading = true;
   totalPages : any;
   movies : any[] = [];
@@ -46,7 +46,7 @@ export class CatalogueComponent implements OnInit {
     this.tmdbService.counter = 1;
     this.tmdbService.getMovies(1,this.filter).subscribe( 
       data => {
-        console.log(data.results.length)
+        //console.log(data.results.length)
         this.totalPages = data.total_pages;
         this.movies = data.results;
         console.log(data.results)
@@ -55,7 +55,7 @@ export class CatalogueComponent implements OnInit {
     );  
   }
 
-  // pagination
+  // pagination button fn
   loadMoreMovies(){
     const pageNumber = ++this.tmdbService.counter;
     if(pageNumber <= this.totalPages){
@@ -68,7 +68,7 @@ export class CatalogueComponent implements OnInit {
         data => {
           const newMovies = this.movies.concat( data.results);
           this.movies= newMovies;
-          console.log('the list length: '+this.movies.length);
+          //console.log('the list length: '+this.movies.length);
         });
     }else{
       console.log('No more movies to load...')
@@ -76,7 +76,7 @@ export class CatalogueComponent implements OnInit {
     
   }
 
-  // floating scroll buttons
+  // floating scroll buttons fn
   goUp(){
       window.scrollTo({ top: 0, behavior: 'smooth' });
   }

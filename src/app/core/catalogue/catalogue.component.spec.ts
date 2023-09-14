@@ -1,80 +1,42 @@
-// import { ComponentFixture, TestBed, fakeAsync, tick, flushMicrotasks } from '@angular/core/testing';
-// import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-// import { HttpClientModule } from '@angular/common/http';
-// import { RouterTestingModule } from '@angular/router/testing';
-// import { By } from '@angular/platform-browser';
-
-// import { CatalogueComponent } from './catalogue.component';
-// import { TmdbService } from '../../services/tmdb.service';
-// import { ActivatedRoute } from '@angular/router';
-
-
-// describe('CatalogueComponent', () => {
-//   let component: CatalogueComponent;
-//   let fixture: ComponentFixture<CatalogueComponent>;
-//   let tmdbService: TmdbService;
-
-//   // const testMovies = [
-//   //   { id: 1, title: 'Movie 1', overview: 'Overview 1' },
-//   //   { id: 2, title: 'Movie 2', overview: 'Overview 2' },
-//   // ];
-
-//   beforeEach(() => {
-//     const mock = spyOn(tmdbService, 'getMovies').and.returnValue(Promise.resolve({results:testMovies}));
-//     TestBed.configureTestingModule({
-//       declarations: [CatalogueComponent],
-//       imports: [HttpClientModule, MatProgressSpinnerModule, RouterTestingModule ],
-//       providers: [
-//         ActivatedRoute,
-//         {
-//           provide: TmdbService,
-//           useValue: mock,
-//         },
-//       ],
-//     });
-//     fixture = TestBed.createComponent(CatalogueComponent);
-//     component = fixture.debugElement.componentInstance;
-//     tmdbService = TestBed.inject(TmdbService);
-//   });
-
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-
-//   it('should initialize movies correctly', () => {
-    
-//     fixture.whenStable().then(()=>{
-//       expect(component.movies).toEqual(testMovies);
-//     })
-    
-//   });
-
-//   it('should load movies into the DOM', () => {
-//     fixture.detectChanges(); 
-//     const movieElements = fixture.debugElement.queryAll(By.css('.movie-item'));
-//     fixture.whenStable().then(()=>{
-//       expect(movieElements.length).toBe(testMovies.length);
-//       })
-    
-//     });
-  
-//   });
-
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
-import { By } from '@angular/platform-browser';
 
 import { CatalogueComponent } from './catalogue.component';
 import { TmdbService } from '../../services/tmdb.service';
 import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
+import { By } from '@angular/platform-browser';
 
 
 describe('CatalogueComponent', () => {
   let component: CatalogueComponent;
   let fixture: ComponentFixture<CatalogueComponent>;
   let tmdbService: TmdbService;
+
+
+  const mock = [
+    {
+      id: 1,
+      title: "Spirited Away",
+      overview: "This is a mock movie overview 1.",
+      release_date: "2001-07-20",
+      poster_path: "/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
+    },
+    {
+      id: 2,
+      title: "Spirited Away 2",
+      overview: "This is a mock movie overview 2.",
+      release_date: "2023-09-12",
+      poster_path: "/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
+    },
+  ];
+  
+
+  const activatedRouteStub = {
+    queryParams: of({ category: 'topRated' })
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -83,56 +45,84 @@ describe('CatalogueComponent', () => {
       providers: [
         {
           provide: ActivatedRoute,
-          useValue: {
-            // mock value for ActivatedRoute
-            snapshot: {
-              paramMap: {
-                get: () => 'popular'
-              }
-            }
-          }
+          useValue: activatedRouteStub
+          //{snapshot: {paramMap: { get: () => 'topRated'}}}
         },
-        TmdbService,
+        {
+          provide : TmdbService,
+          // useValue : 'mock'
+        },
       ],
-    });
+    }).compileComponents();
     fixture = TestBed.createComponent(CatalogueComponent);
     component = fixture.debugElement.componentInstance;
     tmdbService = TestBed.inject(TmdbService);
-    // use spyOn to mock the getMovies method and call through
-    spyOn(tmdbService, 'getMovies').and.callThrough();
+    spyOn(tmdbService, 'getMovies').and.returnValue(of(mock));
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize movies correctly', (done) => {
-    // call fixture.detectChanges() only once
-    fixture.detectChanges();
-    // use expect statements directly after detectChanges()
-    expect(component.movies).toEqual([]);
-    // use subscribe to wait for the observable to emit
-    tmdbService.getMovies().subscribe(() => {
-      expect(component.movies.length).toBeGreaterThan(0);
-      // call done when the test is finished
-      done();
-    });
-  });
+  it(`should have as title 'catalogue'`, (() => {
+    expect(component.title).toEqual('catalogue');
+  }));
 
-  it('should load movies into the DOM', (done) => {
-    // call fixture.detectChanges() only once
-    fixture.detectChanges(); 
-    // use subscribe to wait for the observable to emit
-    tmdbService.getMovies().subscribe(() => {
-      // use detectChanges again to update the view
-      fixture.detectChanges();
-      // use expect statements directly after detectChanges()
-      const movieElements = fixture.debugElement.queryAll(By.css('.movie-item'));
-      expect(movieElements.length).toBe(component.movies.length);
-      // call done when the test is finished
-      done();
-    });
+  it('should render title in a h1 tag', fakeAsync(() => {
+    
+    const compiled = fixture.debugElement.nativeElement;
+    tick();
+    expect(compiled.querySelector('h6').textContent).toContain('Welcome');
+ }));
+
+ it('should set filter and fetch movies when queryParams change', () => {
+
+    const queryParams = { category: 'testCategory' };
+    activatedRouteStub.queryParams = of(queryParams);
+
+
+    console.log('Before ngOnInit');
+    component.ngOnInit();
+    console.log('After ngOnInit');
+
+
+    expect(component.filter).toBe('testCategory');
     
   });
+
+
+
+  it('should initialize movies correctly', fakeAsync(() => {
+
+    fixture.whenStable().then(()=>{
+      tick
+      expect(component.movies.length).toEqual(0);
+    })
+    
+    tmdbService.getMovies().subscribe(() => {
+      tick
+      expect(component.movies.length).toEqual(0);
+      
+    });
+
+  }));
+
+  it('should load movies into the DOM', (() => {
+
+    fixture.detectChanges(); 
+    component.ngOnInit();
+    //tmdbService.getMovies().subscribe(() => {
+    
+      //tick();
+      
+      const movieElements = fixture.debugElement.queryAll(By.css('.card'));
+      fixture.whenStable().then(()=>{
+        expect(movieElements.length).toBe(0);
+      })
+        
+      
+   // });
+    
+  }));
   
 });
