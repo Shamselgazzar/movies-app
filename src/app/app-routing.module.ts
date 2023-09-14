@@ -18,5 +18,8 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
-//, {preloadingStrategy : PreloadAllModules}
+export class AppRoutingModule {}
+
+
+//lazy loading with preloading commented to be used if needed....
+// imports: [RouterModule.forRoot(routes, {preloadingStrategy : PreloadAllModules})],
