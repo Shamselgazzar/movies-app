@@ -46,7 +46,7 @@ export class CatalogueComponent implements OnInit {
     this.tmdbService.counter = 1;
     this.tmdbService.getMovies(1,this.filter).subscribe( 
       data => {
-        //console.log(data.results.length)
+        console.log(data.results.length)
         this.totalPages = data.total_pages;
         this.movies = data.results;
         console.log(data.results)
@@ -68,7 +68,7 @@ export class CatalogueComponent implements OnInit {
         data => {
           const newMovies = this.movies.concat( data.results);
           this.movies= newMovies;
-          //console.log('the list length: '+this.movies.length);
+          console.log('the list length: '+this.movies.length);
         });
     }else{
       console.log('No more movies to load...')

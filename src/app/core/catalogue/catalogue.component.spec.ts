@@ -16,22 +16,25 @@ describe('CatalogueComponent', () => {
   let tmdbService: TmdbService;
 
 
-  const mock = [
-    {
-      id: 1,
-      title: "Spirited Away",
-      overview: "This is a mock movie overview 1.",
-      release_date: "2001-07-20",
-      poster_path: "/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
-    },
-    {
-      id: 2,
-      title: "Spirited Away 2",
-      overview: "This is a mock movie overview 2.",
-      release_date: "2023-09-12",
-      poster_path: "/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
-    },
-  ];
+  const mock = {
+    results:[
+      {
+        id: 1,
+        title: "Spirited Away",
+        overview: "This is a mock movie overview 1.",
+        release_date: "2001-07-20",
+        poster_path: "/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
+      },
+      {
+        id: 2,
+        title: "Spirited Away 2",
+        overview: "This is a mock movie overview 2.",
+        release_date: "2023-09-12",
+        poster_path: "/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
+      },
+    ],
+    length: 2,
+  };
   
 
   const activatedRouteStub = {
@@ -58,6 +61,7 @@ describe('CatalogueComponent', () => {
     component = fixture.debugElement.componentInstance;
     tmdbService = TestBed.inject(TmdbService);
     spyOn(tmdbService, 'getMovies').and.returnValue(of(mock));
+    component.isLoading = false;
   });
 
   it('should create', () => {
@@ -80,7 +84,6 @@ describe('CatalogueComponent', () => {
     const queryParams = { category: 'testCategory' };
     activatedRouteStub.queryParams = of(queryParams);
 
-
     console.log('Before ngOnInit');
     component.ngOnInit();
     console.log('After ngOnInit');
@@ -93,36 +96,19 @@ describe('CatalogueComponent', () => {
 
 
   it('should initialize movies correctly', fakeAsync(() => {
-
-    fixture.whenStable().then(()=>{
-      tick
-      expect(component.movies.length).toEqual(0);
-    })
-    
-    tmdbService.getMovies().subscribe(() => {
-      tick
-      expect(component.movies.length).toEqual(0);
-      
-    });
+    component.ngOnInit();
+    expect(component.movies.length).toEqual(2);
 
   }));
 
   it('should load movies into the DOM', (() => {
 
-    fixture.detectChanges(); 
-    component.ngOnInit();
-    //tmdbService.getMovies().subscribe(() => {
-    
-      //tick();
+    fixture.detectChanges();
       
-      const movieElements = fixture.debugElement.queryAll(By.css('.card'));
-      fixture.whenStable().then(()=>{
-        expect(movieElements.length).toBe(0);
-      })
-        
-      
-   // });
-    
+    const movieElements = fixture.debugElement.queryAll(By.css('.card'));
+    fixture.whenStable().then(()=>{
+      expect(movieElements.length).toBe(2);
+    })
   }));
   
 });
