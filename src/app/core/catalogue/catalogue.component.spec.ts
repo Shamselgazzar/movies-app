@@ -33,7 +33,7 @@ describe('CatalogueComponent', () => {
         poster_path: "/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
       },
     ],
-    length: 2,
+    length: 1,
   };
   
 
@@ -49,7 +49,7 @@ describe('CatalogueComponent', () => {
         {
           provide: ActivatedRoute,
           useValue: activatedRouteStub
-          //{snapshot: {paramMap: { get: () => 'topRated'}}}
+          
         },
         {
           provide : TmdbService,
@@ -64,31 +64,36 @@ describe('CatalogueComponent', () => {
     component.isLoading = false;
   });
 
+  afterEach(() => {
+    activatedRouteStub.queryParams = of({ category: 'topRated' });
+  });
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 
   it(`should have as title 'catalogue'`, (() => {
     expect(component.title).toEqual('catalogue');
   }));
 
+
   it('should render title in a h1 tag', fakeAsync(() => {
-    
     const compiled = fixture.debugElement.nativeElement;
     tick();
     expect(compiled.querySelector('h6').textContent).toContain('Welcome');
  }));
 
+ 
  it('should set filter and fetch movies when queryParams change', () => {
-
     const queryParams = { category: 'testCategory' };
     activatedRouteStub.queryParams = of(queryParams);
 
     console.log('Before ngOnInit');
+    expect(component.filter).toBe(undefined);
+    
     component.ngOnInit();
     console.log('After ngOnInit');
-
-
     expect(component.filter).toBe('testCategory');
     
   });
@@ -104,11 +109,12 @@ describe('CatalogueComponent', () => {
   it('should load movies into the DOM', (() => {
 
     fixture.detectChanges();
-      
     const movieElements = fixture.debugElement.queryAll(By.css('.card'));
-    fixture.whenStable().then(()=>{
+    //fixture.whenStable().then(()=>{
+      console.log(component.filter);
+      console.log(component.movies);
       expect(movieElements.length).toBe(2);
-    })
+    //})
   }));
   
 });
