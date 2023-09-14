@@ -11,10 +11,12 @@ const routes: Routes = [
       )
   }
   
-  ];
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {preloadingStrategy : PreloadAllModules})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
+
+//, {preloadingStrategy : PreloadAllModules}

@@ -12,13 +12,14 @@ export class AuthService {
   
   user!:any;
   users : any[] | undefined;
-  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(!!localStorage.getItem('isLoggedIn'));
 
   constructor(private http: HttpClient) {}
 
 
   async authenticate(email: string, password: string): Promise<boolean> {
     try {
+      
       this.users  = await this.getUsers();
       const user = this.users.find((u) => u.email === email && u.password === password);
       
