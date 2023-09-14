@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -12,36 +12,16 @@ import { AuthService } from '../auth.service';
 })
 
 
-export class LoginComponent implements OnInit{
+export class LoginComponent{
 
   email = '';
   password = '';
-  isLoggedIn = localStorage.getItem('isLoggedIn');
+  
 
   constructor(
     private authService : AuthService,
     private router : Router
     ){}
-
-  ngOnInit(): void {
-
-    //this.checkLogIn()
-    
-  }
-  
-  // runs in ngOnInit
-  checkLogIn(){
-    if (this.isLoggedIn === 'true') {
-      this.authService.setLoggedIn(true);
-      if(localStorage.getItem('currentUrl')){
-        this.router.navigate([localStorage.getItem('currentUrl')]);
-      }else{
-        this.router.navigate(['/home']);
-      }
-    }else{
-      console.log('user is not logged in..');
-    } 
-  }
 
   // form submit function
   onSubmit(form: NgForm){
