@@ -16,7 +16,7 @@ export class LoginComponent{
 
   email = '';
   password = '';
-  
+  errorMessage = '';
 
   constructor(
     private authService : AuthService,
@@ -47,6 +47,7 @@ export class LoginComponent{
       } else {
         // hhandle failed login
         console.log('Authentication failed. Please check your credentials.');
+        this.errorMessage = 'Authentication failed. Please check your credentials.';
       }
     }catch{
       console.log('The login process failed.');

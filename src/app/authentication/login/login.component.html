@@ -55,6 +55,14 @@
                 [disabled]="form.invalid" >Login</button>
               </div>
 
+              <div 
+                class="error-message" 
+                *ngIf="errorMessage"
+                class="text-danger" style="font-size:smaller;"
+                
+                >&nbsp; {{ errorMessage }}
+              </div>
+
             </form>
             
           </div>
