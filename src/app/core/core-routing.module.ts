@@ -10,7 +10,7 @@ const routes: Routes = [
     path: '',
     canActivate: [HomeGuard],
     children: [
-      { path: 'home', component: CatalogueComponent },
+      { path: '', component: CatalogueComponent },
       { path: 'movie-details/:id', component: MovieDetailsComponent },
       
     ],

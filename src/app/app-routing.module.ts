@@ -3,8 +3,9 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
+  {path: '', pathMatch: 'full', redirectTo: 'home'},
   {
-    path: '',
+    path: 'home',
     loadChildren: () =>
       import('./core/core.module').then(
         (m) => m.CoreModule
@@ -17,6 +18,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
-
+export class AppRoutingModule { }
 //, {preloadingStrategy : PreloadAllModules}
