@@ -12,10 +12,7 @@ export class AuthService {
   
   user!:any;
   users : any[] | undefined;
-
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
-  
-  
 
   constructor(private http: HttpClient) {}
 
