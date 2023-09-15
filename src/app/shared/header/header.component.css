@@ -7,6 +7,7 @@
    #loginButton.nav-item.active{
     border: 0px ;
     border-radius: 5%;
+    border: 1.5px solid rgb(204, 204, 204);
   }
   
 

@@ -10,8 +10,16 @@ const routes: Routes = [
     path: '',
     canActivate: [HomeGuard],
     children: [
-      { path: '', component: CatalogueComponent },
-      { path: 'movie-details/:id', component: MovieDetailsComponent },
+      { 
+        path: '',
+        canActivate: [HomeGuard],
+        component: CatalogueComponent 
+      },
+      { 
+        path: 'movie-details/:id', 
+        canActivate: [HomeGuard], 
+        component: MovieDetailsComponent 
+      },
       
     ],
   },
