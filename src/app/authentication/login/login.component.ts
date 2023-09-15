@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 import { AuthService } from '../auth.service';
 
@@ -20,8 +21,13 @@ export class LoginComponent{
 
   constructor(
     private authService : AuthService,
-    private router : Router
-    ){}
+    private router : Router,
+    public translate : TranslateService
+    ){
+      translate.setDefaultLang('en');
+      const browserLang = translate.getBrowserLang();
+      if(browserLang){translate.use( browserLang);}
+    }
 
   // form submit function
   onSubmit(form: NgForm){
