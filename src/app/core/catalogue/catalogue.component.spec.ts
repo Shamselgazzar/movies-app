@@ -54,7 +54,7 @@ describe('CatalogueComponent', () => {
         {
           provide : TmdbService,
           // useValue : 'mock'
-        },
+        }
       ],
     }).compileComponents();
     fixture = TestBed.createComponent(CatalogueComponent);
