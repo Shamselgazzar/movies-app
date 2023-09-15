@@ -13,7 +13,8 @@ export class HeaderComponent implements OnInit{
   isLoggedIn !: boolean;
   isNewUser  = true;
   currentRoutePath = 'empty url';
-  categoryFilter!: 'string';
+  categoryFilter!: string;
+  language = 'en';
 
   constructor( private authService: AuthService,
     private router: Router,
@@ -23,8 +24,7 @@ export class HeaderComponent implements OnInit{
 
   ngOnInit(): void {
 
-    console.log(this.location.path());
-
+    this.checkLocal();
     this.checkLoginStatus();
   
   }
@@ -46,6 +46,15 @@ export class HeaderComponent implements OnInit{
       relativeTo: this.route,
       queryParams: { category : action }
     });
+  }
+
+  checkLocal(){
+    const storedLanguage = localStorage.getItem('language');
+    this.language = storedLanguage ? storedLanguage : 'en';
+  }
+
+  toggleLocal(){
+    this.language = this.language === 'en'? 'ar': 'en';
   }
     
   // to apply active to the home route even if any query params is added

@@ -26,6 +26,7 @@ overflow: hidden;
 text-overflow: ellipsis;
 }
     
+
 /* buttons styles */
 #goUp {
   position: fixed;

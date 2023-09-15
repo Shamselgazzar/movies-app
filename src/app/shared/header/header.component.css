@@ -30,3 +30,33 @@
     margin-right: 5px;
     margin-left: 5px;
   }
+
+/* local toggle button styles */
+#languageToggle {
+  cursor: pointer;
+  border: 2.5px solid #ddd;
+  border-radius: 100%;
+  width: 45px;
+  height: 45px;
+  background-color:  rgb(170, 169, 169);
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 15px;
+  text-align: center;
+  color: #0e0b0b;
+  transition: background-color 0.4s ease;
+}
+#languageToggle a {
+  font-weight: bold;
+  color: #0e0b0b;
+}
+
+#languageToggle:hover {
+  background-color: transparent;
+  border: 2.5px solid rgb(170, 169, 169);
+}
+#languageToggle:hover a{
+  color: rgb(170, 169, 169);
+
+}
+

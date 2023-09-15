@@ -42,7 +42,6 @@
       </ul>
 
       
-
       <div class="flex-grow-1"></div> 
 
       <ul class="navbar-nav ">
@@ -72,6 +71,14 @@
             (click)="logout()"
             >
           <a   class="nav-link" >Logout!</a>
+        </li>
+
+        <li 
+            class="nav-item" 
+            id="languageToggle"
+            (click)="toggleLocal()"
+            >
+          <a class="nav-link" >{{language}}</a>
         </li>
 
       </ul>
