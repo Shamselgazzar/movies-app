@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, lastValueFrom } from 'rxjs';
-
-
+//import * as userss from '../../assets/users.json';
+//import * as fs from'fs';
 
 @Injectable({providedIn: 'root'})
 
@@ -20,12 +20,13 @@ export class AuthService {
   async authenticate(email: string, password: string): Promise<boolean> {
     try {
       
-      this.users  = await this.getUsers();
+      this.users  = await this.getAllUsers();
       const user = this.users.find((u) => u.email === email && u.password === password);
       
       this.isAuthenticatedSubject.next(!!user);
       this.user = user;
-      localStorage.setItem('isLoggedIn', 'true');
+      
+      localStorage.setItem('isLoggedIn', (!!user).toString());
       console.log('AuthService says this user is authenticated = '+!!user)
       return !!user;
     } catch (error) {
@@ -52,6 +53,50 @@ export class AuthService {
 
   setLoggedIn(value: boolean): void {
     this.isAuthenticatedSubject.next(value);
+  }
+
+  async getAllUsers(){
+    var allUsers :any[];
+    var storageUsers:any[];
+    const currentUsers  = await this.getUsers();
+    const storageUsersJSON = localStorage.getItem('users');
+
+    if (storageUsersJSON !== null) {
+      storageUsers = JSON.parse(storageUsersJSON);
+      allUsers = currentUsers.concat(storageUsers);
+    } else {
+      allUsers = currentUsers;
+      storageUsers = [];
+    }
+    return allUsers;
+  }
+
+  async signUp(email: string, password: string) : Promise <string>{
+    
+    var allUsers :any[];
+    var storageUsers:any[];
+    const currentUsers  = await this.getUsers();
+    const storageUsersJSON = localStorage.getItem('users');
+
+    if (storageUsersJSON !== null) {
+      storageUsers = JSON.parse(storageUsersJSON);
+      allUsers = currentUsers.concat(storageUsers);
+    } else {
+      allUsers = currentUsers;
+      storageUsers = [];
+    }
+    const user = allUsers.find((u) => u.email === email);
+    if(user){
+      return 'this user is already registered.. login instead'
+    }else{
+      console.log(allUsers)
+      storageUsers.push({"email": email, "password": password });
+      console.log(allUsers)
+      localStorage.setItem('users',  JSON.stringify(storageUsers))
+      //fs.writeFileSync('../../assets/data.json', currentUsers, 'utf-8');
+      //await this.http.put<any[]>('../../assets/users.json', currentUsers).toPromise;
+      return 'you are now successfully registered.. go to login'
+    }
   }
 
 

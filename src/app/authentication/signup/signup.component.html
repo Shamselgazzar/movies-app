@@ -59,7 +59,12 @@
                 class="error-message" 
                 *ngIf="errorMessage"
                 class="text-danger" style="font-size:smaller;"
-                >&nbsp; {{ errorMessage }}
+                >&nbsp; {{ errorMessage }} 
+              </div>
+
+              <div class="signup-footer">
+                <p class="footer-text">Already have an account?</p>
+                <a class="footer-link" [routerLink]="['/login']">Go to Login page </a>
               </div>
 
             </form>

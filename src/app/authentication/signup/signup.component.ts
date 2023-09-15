@@ -10,8 +10,6 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
-  email = '';
-  password = '';
   errorMessage = '';
 
   constructor(
@@ -19,19 +17,11 @@ export class SignupComponent {
     private router : Router
   ){}
 
-  signUp(form: NgForm){
-    this.email = form.value.email;
-    this.password = form.value.password;
+  async signUp(form: NgForm){
 
-    const isAuthenticated = this.authService.isAuthenticatedCheck();
-      if (isAuthenticated) {
-        console.log('User is authenticated.');
-        this.router.navigate(['/home']);
-      } else {
-        console.log('Authentication failed. Please check your credentials.');
-        this.errorMessage = 'Authentication failed. Please check your credentials.';
-      }
+    this.errorMessage  = await this.authService.signUp(form.value.email, form.value.password);
 
+    form.reset();
   }
 
 }
