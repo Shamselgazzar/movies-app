@@ -88,12 +88,9 @@ describe('CatalogueComponent', () => {
  it('should set filter and fetch movies when queryParams change', () => {
     const queryParams = { category: 'testCategory' };
     activatedRouteStub.queryParams = of(queryParams);
-
-    console.log('Before ngOnInit');
     expect(component.filter).toBe(undefined);
     
     component.ngOnInit();
-    console.log('After ngOnInit');
     expect(component.filter).toBe('testCategory');
     
   });
@@ -112,8 +109,6 @@ describe('CatalogueComponent', () => {
     fixture.detectChanges();
     const movieElements = fixture.debugElement.queryAll(By.css('.card'));
 
-    console.log(component.filter);
-    console.log(component.movies);
     expect(movieElements.length).toBe(2);
 
   }));

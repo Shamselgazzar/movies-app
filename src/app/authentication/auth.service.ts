@@ -27,7 +27,6 @@ export class AuthService {
       this.user = user;
       
       localStorage.setItem('isLoggedIn', (!!user).toString());
-      console.log('AuthService says this user is authenticated = '+!!user)
       return !!user;
     } catch (error) {
       console.error('myError authenticating user:', error);
@@ -89,9 +88,7 @@ export class AuthService {
     if(user){
       return 'this user is already registered.. login instead'
     }else{
-      console.log(allUsers)
       storageUsers.push({"email": email, "password": password });
-      console.log(allUsers)
       localStorage.setItem('users',  JSON.stringify(storageUsers))
       //fs.writeFileSync('../../assets/data.json', currentUsers, 'utf-8');
       //await this.http.put<any[]>('../../assets/users.json', currentUsers).toPromise;

@@ -44,11 +44,8 @@ export class MovieDetailsComponent implements OnInit{
     if (this.movieId) {
       this.movieService.getMovieDetails(this.movieId).subscribe(
         data => {
-          this.movie  = data;
-          console.log(this.movie);            
+          this.movie  = data;         
       });
-    }else{
-      console.log('There is no movie id aquired to fetch data for...')
     }
   }
 

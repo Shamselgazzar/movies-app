@@ -37,7 +37,6 @@ export class CatalogueComponent implements OnInit {
   checkCategoryAndFetchMovies(){
     this.route.queryParams.subscribe(params => {
       const receivedData = params['category'];
-      console.log('category: ', receivedData);
       this.filter = receivedData;
       this.fetchMovies();
       
@@ -48,10 +47,8 @@ export class CatalogueComponent implements OnInit {
     this.tmdbService.counter = 1;
     this.tmdbService.getMovies(1,this.filter).subscribe( 
       data => {
-        console.log(data.results.length)
         this.totalPages = data.total_pages;
         this.movies = data.results;
-        console.log(data.results);
         this.isLoading = false;
       } 
     );  
@@ -62,18 +59,11 @@ export class CatalogueComponent implements OnInit {
     const pageNumber = ++this.tmdbService.counter;
     if(pageNumber <= this.totalPages){
 
-      console.log('loading more movies...')
-      console.log('total pages: '+this.totalPages)
-      console.log('page number is : '+ pageNumber)
-
       this.tmdbService.getMovies(pageNumber,this.filter).subscribe( 
         data => {
           const newMovies = this.movies.concat( data.results);
           this.movies= newMovies;
-          console.log('the list length: '+this.movies.length);
         });
-    }else{
-      console.log('No more movies to load...')
     }
     
   }

@@ -27,7 +27,6 @@ export class TmdbService {
 
   getMovies(pageNumber: number = this.pageNumber, movieType = environment.movieType): Observable<any> {
     let apiUrl: string;
-    console.log(environment.configuration);
     switch (movieType) {
       case 'popular':
         apiUrl = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=' + pageNumber + '&api_key=' + this.apiKey;
@@ -39,7 +38,6 @@ export class TmdbService {
         apiUrl = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=' + pageNumber + '&api_key=' + this.apiKey;
         break;
       default:
-        console.log('Inalid Movies category')
         throw new Error('Invalid movie type');
     }
   

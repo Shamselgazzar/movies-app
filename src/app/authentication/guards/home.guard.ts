@@ -22,7 +22,6 @@ export class HomeGuard  {
     });
     
     if (this.isLoggedIn) {
-      console.log("authGuard says hi");
       return true;
     } else {
       
