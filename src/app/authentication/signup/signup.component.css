@@ -1,0 +1,10 @@
+
+/* the signup menu styles */
+.card{
+    border-radius: 20px;
+}
+
+/* input validation styles */
+input.ng-invalid.ng-touched{
+    border: 2px solid rgb(240, 127, 127);
+}

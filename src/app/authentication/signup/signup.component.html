@@ -5,12 +5,12 @@
         <div class="card shadow-lg">
             
           <div class="card-header text-center">
-            <h2 i18n >Login</h2>
+            <h2 i18n >SignUp</h2>
           </div>
 
           <div class="card-body ">
 
-            <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+            <form (ngSubmit)="signUp(form)" #form="ngForm">
               
               <div class="mb-3 form-group">
                 <label i18n for="email" class="form-label">Email</label>
@@ -52,7 +52,7 @@
                 <button i18n
                 type="submit"
                 class="btn btn-primary"
-                [disabled]="form.invalid" >Login</button>
+                [disabled]="form.invalid" >Sign UP</button>
               </div>
 
               <div 
