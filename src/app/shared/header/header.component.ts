@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  ActivatedRoute, Router } from '@angular/router';
+import {  ActivatedRoute, IsActiveMatchOptions, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { AuthService } from '../../authentication/auth.service';
@@ -42,12 +42,19 @@ export class HeaderComponent implements OnInit{
   }
  
   category(action:string){
-
     this.router.navigate(['/home'], {
       relativeTo: this.route,
       queryParams: { category : action }
     });
   }
     
- 
+  // to apply active to the home route even if any query params is added
+  // but not if extra path segments added
+  routerLinkActiveOptions: IsActiveMatchOptions = {
+    matrixParams: 'ignored',
+    queryParams: 'ignored',
+    fragment: 'ignored',
+    paths: 'exact'
+    };
 }
+
