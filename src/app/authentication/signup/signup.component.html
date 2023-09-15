@@ -1,77 +1,70 @@
-
 <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="card shadow-lg">
-            
-          <div class="card-header text-center">
-            <h2 i18n >SignUp</h2>
-          </div>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg">
+        <div class="card-header text-center">
+          <h2>{{ 'signup.header' | translate }}</h2>
+        </div>
 
-          <div class="card-body ">
+        <div class="card-body">
+          <form (ngSubmit)="signUp(form)" #form="ngForm">
+            <div class="mb-3 form-group">
+              <label for="email" class="form-label">{{ 'signup.emailLabel' | translate }}</label>
+              <input
+                #email="ngModel"
+                ngModel
+                type="email"
+                id="email"
+                placeholder="{{ 'signup.emailPlaceholder' | translate }}"
+                name="email"
+                class="form-control"
+                email
+                required
+              >
+              <span class="help-block">
+                <div *ngIf="email.invalid && email.touched" class="text-danger" style="font-size: smaller;">&nbsp; {{ 'signup.emailValidation' | translate }}</div>
+              </span>
+            </div>
 
-            <form (ngSubmit)="signUp(form)" #form="ngForm">
-              
-              <div class="mb-3 form-group">
-                <label i18n for="email" class="form-label">Email</label>
-                <input
-                  #email = 'ngModel'
-                  ngModel
-                  type="email"
-                  id="email"
-                  placeholder="Enter your email"
-                  i18n-placeholder
-                  name="email"
-                  class="form-control"
-                  email
-                  required>
-                  <span class="help-block">
-                    <div i18n *ngIf="email.invalid && email.touched" class="text-danger" style="font-size:smaller;">&nbsp; Please enter a valid email!</div>
-                  </span>
-              </div>
+            <div class="form-group mb-3">
+              <label for="password" class="form-label">{{ 'signup.passwordLabel' | translate }}</label>
+              <input
+                #password="ngModel"
+                ngModel
+                type="password"
+                id="password"
+                name="password"
+                class="form-control"
+                placeholder="{{ 'signup.passwordPlaceholder' | translate }}"
+                required
+                password
+              >
+              <span class="help-block">
+                <div *ngIf="password.invalid && password.touched" class="text-danger" style="font-size: smaller;">&nbsp; {{ 'signup.passwordValidation' | translate }}</div>
+              </span>
+            </div>
 
-              <div class=" form-group mb-3">
-                <label i18n for="password" class="form-label">Password</label>
-                <input
-                  #password = 'ngModel'
-                  ngModel
-                  type="password"
-                  id="password"
-                  name="password"
-                  class="form-control"
-                  placeholder="Enter your password"
-                  i18n-placeholder
-                  required
-                  password>
-                  <span class="help-block">
-                    <div i18n *ngIf="password.invalid && password.touched" class="text-danger" style="font-size:smaller;">&nbsp; Please enter a valid password!</div>
-                  </span>
-              </div>
-
-              <div class="d-grid">
-                <button i18n
+            <div class="d-grid">
+              <button
                 type="submit"
                 class="btn btn-primary"
-                [disabled]="form.invalid" >Sign UP</button>
-              </div>
+                [disabled]="form.invalid"
+              >
+                {{ 'signup.signUpButton' | translate }}
+              </button>
+            </div>
 
-              <div 
-                class="error-message" 
-                *ngIf="errorMessage"
-                class="text-danger" style="font-size:smaller;"
-                >&nbsp; {{ errorMessage }} 
-              </div>
+            <div class="error-message" *ngIf="errorMessage" class="text-danger" style="font-size: smaller;">
+              &nbsp; {{ errorMessage | translate }}
+            </div>
 
-              <div class="signup-footer">
-                <p class="footer-text">Already have an account?</p>
-                <a class="footer-link" [routerLink]="['/login']">Go to Login page </a>
-              </div>
-
-            </form>
-            
-          </div>
+            <div class="signup-footer">
+              <p class="footer-text">{{ 'signup.alreadyHaveAccount' | translate }}</p>
+              <a class="footer-link" [routerLink]="['/login']">{{ 'signup.loginLink' | translate }}</a>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 import { TmdbService } from '../../services/tmdb.service';
 
@@ -22,7 +23,8 @@ export class CatalogueComponent implements OnInit {
   constructor (
     private tmdbService : TmdbService,
     private location: Location,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public translate : TranslateService
     ) {}
 
   ngOnInit(): void {

@@ -1,5 +1,39 @@
 {
-    "Home" : "home",
-    "Login": "login",
-    "Logout": "logout"
+    "direction": "ltr",
+
+    "login.header": "Login",
+    "login.emailLabel": "Email",
+    "login.emailPlaceholder": "Enter your email",
+    "login.emailValidation": "Please enter a valid email!",
+    "login.passwordLabel": "Password",
+    "login.passwordPlaceholder": "Enter your password",
+    "login.passwordValidation": "Please enter a valid password!",
+    "login.loginButton": "Login",
+    "login.errorMessage": "Invalid credentials. Please try again.",
+    "login.newHereText": "New here?",
+    "login.signUpLink": "Go to Sign Up Page",
+
+    "signup.header": "Sign Up",
+    "signup.emailLabel": "Email",
+    "signup.emailPlaceholder": "Enter your email",
+    "signup.emailValidation": "Please enter a valid email!",
+    "signup.passwordLabel": "Password",
+    "signup.passwordPlaceholder": "Enter your password",
+    "signup.passwordValidation": "Please enter a valid password!",
+    "signup.signUpButton": "Sign Up",
+    "signup.errorMessage": "Invalid credentials. Please try again.",
+    "signup.alreadyHaveAccount": "Already have an account?",
+    "signup.loginLink": "Go to Login page",
+
+    "navbar.brand": "SMRG Movies",
+    "navbar.catalogue": "Catalogue",
+    "navbar.about": "About",
+    "navbar.category": "Category",
+    "navbar.topRated": "Top Rated",
+    "navbar.popular": "Popular",
+    "navbar.discover": "Discover",
+    "navbar.login": "Login Here!",
+    "navbar.welcome": "Welcome back, Friend!",
+    "navbar.logout": "Logout!",
+    "navbar.language": "Language"
 }

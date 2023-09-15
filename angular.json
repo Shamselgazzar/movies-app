@@ -4,12 +4,7 @@
   "newProjectRoot": "projects",
   "projects": {
     "movies-app": {
-      "i18n": {
-        "sourceLocale": "en-US",
-        "locales": {
-          "ar": "src/locale/messages.ar.xlf"
-        }
-      },
+      
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -104,12 +99,7 @@
           },
           "defaultConfiguration": "development"
         },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "movies-app:build"
-          }
-        },
+        
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {

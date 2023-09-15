@@ -34,6 +34,9 @@
 
 /* local toggle button styles */
 #languageToggle {
+  position: fixed;
+  right: 3px;
+  top: 6px;
   cursor: pointer;
   border: 2.5px solid #ddd;
   border-radius: 100%;
@@ -60,4 +63,6 @@
   color: rgb(170, 169, 169);
 
 }
-
+.container-fluid{
+  padding-right: 80px;
+}

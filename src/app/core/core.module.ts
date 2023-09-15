@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
@@ -21,6 +22,7 @@ import { CoreRoutingModule } from './core-routing.module';
     CoreRoutingModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
+    TranslateModule
   ],
   exports: [
     

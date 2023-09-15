@@ -1,5 +1,39 @@
 {
-    "Home" : "الصفحة الرئيسية",
-    "Login": "تسجيل الدخول",
-    "Logout": "تسجيل الخروج"
+    "direction": "rtl",
+
+    "login.header": "تسجيل الدخول",
+    "login.emailLabel": "البريد الإلكتروني",
+    "login.emailPlaceholder": "أدخل عنوان بريدك الإلكتروني",
+    "login.emailValidation": "يرجى إدخال عنوان بريد إلكتروني صالح!",
+    "login.passwordLabel": "كلمة المرور",
+    "login.passwordPlaceholder": "أدخل كلمة المرور الخاصة بك",
+    "login.passwordValidation": "يرجى إدخال كلمة مرور صالحة!",
+    "login.loginButton": "تسجيل الدخول",
+    "login.errorMessage": "بيانات اعتماد غير صحيحة. يرجى المحاولة مرة أخرى.",
+    "login.newHereText": "هل أنت جديد هنا؟",
+    "login.signUpLink": "الانتقال إلى صفحة التسجيل",
+
+    "signup.header": "التسجيل",
+    "signup.emailLabel": "البريد الإلكتروني",
+    "signup.emailPlaceholder": "أدخل عنوان بريدك الإلكتروني",
+    "signup.emailValidation": "يرجى إدخال عنوان بريد إلكتروني صالح!",
+    "signup.passwordLabel": "كلمة المرور",
+    "signup.passwordPlaceholder": "أدخل كلمة المرور الخاصة بك",
+    "signup.passwordValidation": "يرجى إدخال كلمة مرور صالحة!",
+    "signup.signUpButton": "التسجيل",
+    "signup.errorMessage": "بيانات اعتماد غير صحيحة. يرجى المحاولة مرة أخرى.",
+    "signup.alreadyHaveAccount": "هل لديك حساب بالفعل؟",
+    "signup.loginLink": "الانتقال إلى صفحة تسجيل الدخول",
+
+    "navbar.brand": "أفلام SMRG",
+    "navbar.catalogue": "الأفلام",
+    "navbar.about": "من نحن",
+    "navbar.category": "الفئة",
+    "navbar.topRated": "أعلى التقييم",
+    "navbar.popular": "الأكثر شهرة",
+    "navbar.discover": "اكتشف",
+    "navbar.login": "تسجيل الدخول هنا!",
+    "navbar.welcome": "مرحبًا بك مرة أخرى!",
+    "navbar.logout": "تسجيل الخروج!",
+    "navbar.language": "اللغة"
 }

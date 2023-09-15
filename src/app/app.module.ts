@@ -25,7 +25,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
     BrowserAnimationsModule,
     AuthenticationModule,
     SharedModule,
-    TranslateModule.forChild({
+    TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {
         provide: TranslateLoader,

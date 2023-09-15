@@ -22,20 +22,20 @@
         routerLinkActive="active" 
         [routerLinkActiveOptions]="routerLinkActiveOptions"
          >
-          <a [routerLink]="['/home']" class="nav-link" >Catalogue</a>
+          <a [routerLink]="['/home']" class="nav-link" >{{ 'navbar.catalogue' | translate }}</a>
         </li>
         <li class="nav-item left " routerLinkActive="active">
-          <a [routerLink]="['home/about']" class="nav-link">About</a>
+          <a [routerLink]="['home/about']" class="nav-link">{{ 'navbar.about' | translate }}</a>
         </li>
 
         <li class="nav-item dropdown" *ngIf="isLoggedIn">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Category
+            {{ 'navbar.category' | translate }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" (click)="category('topRated')">Top Rated</a></li>
-            <li><a class="dropdown-item" (click)="category('popular')">Popular</a></li>
-            <li><a class="dropdown-item" (click)="category('discover')">Discover</a></li>
+            <li><a class="dropdown-item" (click)="category('topRated')">{{ 'navbar.topRated' | translate }}</a></li>
+            <li><a class="dropdown-item" (click)="category('popular')">{{ 'navbar.popular' | translate }}</a></li>
+            <li><a class="dropdown-item" (click)="category('discover')">{{ 'navbar.discover' | translate }}</a></li>
           </ul>
         </li>
         
@@ -53,14 +53,14 @@
         style="cursor: pointer; " 
         id="loginButton"
         >
-          <a [routerLink]="['/login']" *ngIf="!isLoggedIn" class="nav-link">Login Here!</a>
+          <a [routerLink]="['/login']" *ngIf="!isLoggedIn" class="nav-link">{{ 'navbar.login' | translate }}</a>
         </li>
         
         <li *ngIf="isLoggedIn" 
         class="nav-item d-none d-md-block" 
         id="welcome"
         >
-          <a  class="nav-link" >Welcome back, Friend!</a>
+          <a  class="nav-link" >{{ 'navbar.welcome' | translate }}</a>
         </li>
 
         <li *ngIf="isLoggedIn"
@@ -70,7 +70,7 @@
             id="logoutButton"
             (click)="logout()"
             >
-          <a   class="nav-link" >Logout!</a>
+          <a   class="nav-link" >{{ 'navbar.logout' | translate }}</a>
         </li>
 
         <li 

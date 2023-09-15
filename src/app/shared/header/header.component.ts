@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  ActivatedRoute, IsActiveMatchOptions, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
 
 import { AuthService } from '../../authentication/auth.service';
 
@@ -19,7 +20,8 @@ export class HeaderComponent implements OnInit{
   constructor( private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private location : Location
+    private location : Location,
+    public translate : TranslateService
     ){}
     
   ngOnInit(): void {
@@ -51,11 +53,14 @@ export class HeaderComponent implements OnInit{
   checkLocal(){
     const storedLanguage = localStorage.getItem('language');
     this.language = storedLanguage ? storedLanguage : 'en';
+    this.translate.use(this.language);
   }
 
   toggleLocal(){
     this.language = this.language === 'en'? 'ar': 'en';
     localStorage.setItem('language', this.language );
+    this.translate.use(this.language);
+
   }
     
   // to apply active to the home route even if any query params is added

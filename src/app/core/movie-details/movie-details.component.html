@@ -1,7 +1,6 @@
 
-
-<div class="container-fluid" *ngIf="movie">
-  <div class="row">
+<div [dir]="'direction' | translate" class="container-fluid" *ngIf="movie">
+  <div  class="row">
 
     <div class="col-md-4" >
       <img class="img-fluid" src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}">

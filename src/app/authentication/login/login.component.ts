@@ -24,9 +24,7 @@ export class LoginComponent{
     private router : Router,
     public translate : TranslateService
     ){
-      translate.setDefaultLang('en');
-      const browserLang = translate.getBrowserLang();
-      if(browserLang){translate.use( browserLang);}
+      
     }
 
   // form submit function

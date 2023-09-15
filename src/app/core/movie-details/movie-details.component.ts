@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
 
 import { TmdbService } from '../../services/tmdb.service';
 import { Movie } from './movie';
@@ -19,7 +20,8 @@ export class MovieDetailsComponent implements OnInit{
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private movieService: TmdbService
+    private movieService: TmdbService,
+    public translate : TranslateService
       ){}
 
   ngOnInit(): void {
