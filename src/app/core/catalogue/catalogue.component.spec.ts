@@ -78,7 +78,7 @@ describe('CatalogueComponent', () => {
   }));
 
 
-  it('should render title in a h1 tag', () => {
+  it('should render title in a h6 tag', () => {
     const compiled = fixture.debugElement.nativeElement;
     
     expect(compiled.querySelector('h6').textContent).toContain('Welcome');
